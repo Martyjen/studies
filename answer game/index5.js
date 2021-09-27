@@ -10,7 +10,7 @@ function replaceBackground(background) { // функция с пораметро
 
 function startGameRandom() {
     var randomNumber = Math.floor(Math.random() * 2); //присвоить переменной "randomNumber" случайное число от 0 до 1.99 округлённое до целого. 0 или 1.
-    if (randomNumber == 1) { //Если переменная randomNumber равна 1, то ==>
+    if (randomNumber == 1) { //Если переменная randomNumber равна 1, то =>
         replaceBackground("bagraundGreen"); //Передать функции replaceBackground, атрибут "bagraundGreen".
         document.getElementById("h2_id").innerHTML = "Да.";
     } else { //Иначе ==>
