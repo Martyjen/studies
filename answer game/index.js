@@ -1,11 +1,15 @@
 
 var randomAnswer = {
-    button: document.getElementById("buttonId"),
-    backgroundColor: document.getElementById("select_block"),
+    button: null,
+    backgroundColor: null,
+    randomNumber: null,
 
 
     start: function () {
         var that = this;
+        this.button = document.getElementById("buttonId");
+        this.backgroundColor = document.getElementById("select_block");
+
         this.button.addEventListener('click', function() {
             that.startGameRandom();
         });
