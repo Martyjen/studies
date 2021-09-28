@@ -4,6 +4,7 @@ var randomAnswer = {
     button: null,
     backgroundColor: null,
     
+
     start: function () {
         var that = this;
         this.button = document.getElementById("buttonId");
