@@ -1,10 +1,9 @@
-var arreyResault = ["Да", "Нет", "Возможно"];
-var arreybagraundColor = ["bagraundGreen", "bagraundRed", "bagraundYellow"]
+var arreyData = [["Да", "Нет", "Возможно"], ["bagraundGreen", "bagraundRed", "bagraundYellow"]];
 
 document.getElementById("buttonId").addEventListener('click', function () {
-    var key = Math.floor(Math.random() * arreyResault.length); //Присваеваем переменной "key" случайное число которое не больше длины массива "arreyResault".
-    document.getElementById("select_block").className = arreybagraundColor[key];
-    document.getElementById("h2_id").innerHTML = arreyResault[key];
+    var key = Math.floor(Math.random() * arreyData[0].length); //Присваеваем переменной "key" случайное число которое не больше длины массива "arreyResault".
+    document.getElementById("h2_id").innerHTML = arreyData[0][key];
+    document.getElementById("select_block").className = arreyData[1][key];
 });
 
 
