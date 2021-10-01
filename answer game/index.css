@@ -1,3 +1,8 @@
+h2 {
+  margin: 16%;
+  font-size: 18px;
+}
+
 .contener-game{
   border: 2px solid;
   height: 300px;
@@ -5,7 +10,11 @@
   margin:auto;
   text-align: center;
 }
-.selectBlock{
+
+.selectBlock,
+.bagraundGreen,
+.bagraundRed,
+.bagraundYellow{
   margin:auto;
   border: 2px solid;
   width: 10em;
@@ -16,43 +25,16 @@
   text-align: center;
   background: rgb(225, 241, 255);
 }
+
 .bagraundGreen{
-  margin:auto;
-  border: 2px solid;
-  width: 10em;
-  height: 10em;
-  border: 2px solid rgb(68, 0, 255);
-  border-radius: 50%;
-  line-height: 2em;
-  text-align: center;
   background: rgb(130, 247, 126);
 }
 
 .bagraundRed{
-  margin:auto;
-  border: 2px solid;
-  width: 10em;
-  height: 10em;
-  border: 2px solid rgb(68, 0, 255);
-  border-radius: 50%;
-  line-height: 2em;
-  text-align: center;
-  background: rgb(247, 126, 126);
+   background: rgb(247, 126, 126);
 }
 
 .bagraundYellow{
-  margin:auto;
-  border: 2px solid;
-  width: 10em;
-  height: 10em;
-  border: 2px solid rgb(68, 0, 255);
-  border-radius: 50%;
-  line-height: 2em;
-  text-align: center;
-  background: rgb(247, 239, 126);
+   background: rgb(247, 239, 126);
 }
 
-h2 {
-    margin: 16%;
-    font-size: 18px;
-}

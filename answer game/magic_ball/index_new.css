@@ -1,0 +1,29 @@
+html {
+    background-image: url(img/room.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+img {
+    width: 100%;
+}
+.game{
+    margin:auto;
+    border: 2px solid black;
+    width: 600px;
+    text-align: center;
+    position: relative;
+}
+
+.ball{
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: blanchedalmond;
+}
