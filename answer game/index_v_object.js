@@ -1,42 +1,37 @@
 
-var randomAnswer = {
-    
-    button: null,
-    backgroundColor: null,
-    
+var randomData = {
+    arreyData: [["Да", "Нет", "Возможно"], ["bagraundGreen", "bagraundRed", "bagraundYellow"]], // 1 массив: Добавить имя + 2 массив: добавить имя class.
+    button: "buttonId", //Добавить ID кнопки.
+    text: "h2_id", //Добавить ID места вывода результата из масивва "arreyData".
+    nameClass: "select_block", //Добавить class блока для замены его из масивва "arreyData".
+    i: 0,
+    r: 0,
 
     start: function () {
-        var that = this;
-        this.button = document.getElementById("buttonId");
-        this.backgroundColor = document.getElementById("select_block");
-
-        this.button.addEventListener('click', function () {
-            that.startGameRandom();
-        });
-    },
-
-    //Случайный выбор значения "0 любо 1", с последующим выводом сообщения "Да любо нет".
-    startGameRandom: function () {
-        var that = this;
-        let randomNumber = Math.floor(Math.random() * 2);
-        if (randomNumber == 1) {
-            that.replaceBackground("bagraundGreen");
-            document.getElementById("h2_id").innerHTML = "Да.";
-        } else {
-            document.getElementById("h2_id").innerHTML = "Нет.";
-            that.replaceBackground("bagraundRed");
+        var thet = this;
+        document.getElementById(this.button).addEventListener('click', animationBackground);
+        function animationBackground() {
+            showResultAndColor(thet.i);
+            thet.i++;
+            if (thet.i < thet.arreyData[0].length) {
+                setTimeout(animationBackground, 100);
+            }
+            else if (thet.r < thet.arreyData[0].length) {
+                thet.i = 0;
+                thet.r++;
+                setTimeout(animationBackground, 100);
+            }
+            else {
+                thet.r = 0;
+                thet.i = 0;
+                var key = Math.floor(Math.random() * thet.arreyData[0].length);
+                showResultAndColor(key);
+            }
         }
 
-    },
-    // Присвоение нового класса пораметру "backgroundColor".
-    replaceBackground: function (background) {
-        this.backgroundColor.className = background;
-    },
+        function showResultAndColor(key) {
+            document.getElementById("h2_id").innerHTML = thet.arreyData[0][key];
+            document.getElementById("select_block").className = thet.arreyData[1][key];
+        }
+    }
 }
-
-
-
-
-
-
-
