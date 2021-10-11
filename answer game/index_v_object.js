@@ -10,6 +10,7 @@ var randomData = {
     start: function () {
         var thet = this;
         document.getElementById(this.button).addEventListener('click', animationBackground);
+        
         function animationBackground() {
             showResultAndColor(thet.i);
             thet.i++;
