@@ -6,7 +6,7 @@ var converter =
         { name: "Сантиметр", value: 10 },
         { name: "Дециметр", value: 100 },
         { name: "Метр", value: 1000 },
-        { name: "Километор", value: 1000000 },
+        { name: "Километр", value: 1000000 },
         { name: "Верста", value: 106680 },
         { name: "Миля", value: 1609344 },
         { name: "Морская миля", value: 1852000 },
