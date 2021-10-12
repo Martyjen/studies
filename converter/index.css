@@ -1,0 +1,20 @@
+div{
+    border: 4px double black; 
+    width:500px;
+    padding: 1%;
+
+}
+
+input{
+   width:60%;
+   height: 45px;
+   font-size: 22px;
+}
+select{
+    width:30%;
+    height: 50px;
+    font-size: 22px;
+ }
+ button{
+    width:100%;
+ }
