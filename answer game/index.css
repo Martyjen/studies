@@ -6,7 +6,9 @@ h2 {
   margin: 16%;
   font-size: 18px;
 }
-
+body{
+  min-width:500px;
+  }
 .contener-game{
   margin:auto;
   text-align: center;
