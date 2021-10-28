@@ -3,7 +3,7 @@ h1{
   color: white;
 }
 h2 {
-  margin: 16%;
+  margin: 14%;
   font-size: 18px;
 }
 body{
@@ -31,9 +31,9 @@ body{
   height: 50%;
   border: 4px solid rgb(173 213 255);
   border-radius: 50%;
-  line-height: 2em;
+  line-height: 6em;
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  /* font-family: 'Times New Roman', Times, serif; */
   background-image: url(img/white.png);
   background-size:cover;
   box-shadow: inset 2px 4px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
