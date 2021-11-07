@@ -1,6 +1,6 @@
 
 var randomData = {
-    arreyData: [["Да", "Нет", "Возможно"], ["bagraundGreen", "bagraundRed", "bagraundYellow"]], // 1 массив: Добавить имя + 2 массив: добавить имя class.
+    arreyData: [["Да", "Нет", "Возможно"], ["bagraundGreen", "bagraundRed", "bagraundYellow"]], // 1 массив: Добавить имя + 2 массив: добавить class.
     button: "select_block", //Добавить ID элемента на нажатие которого будет реакция - "кнопка СТАРТ".
     text: "h2_id", //Добавить ID места вывода результата из масивва "arreyData".
     nameClass: "select_block", //Добавить class блока для замены его из масивва "arreyData".
