@@ -10,53 +10,52 @@
 <body>
 
 <div class="contener">
-    <div class="border menu">
-        <select name="" id="select3_id"></select>
+    <div class="div1">
+        <button class="button_menu" onclick="document.location='convert.html'">Конвертер</button>
     </div>
-
     <div class="input-select">
         <div class="border">
             <div class="text-smol"> Введите значение:</div>
-            <input class="color" type="text" id="number1">
+            <input class="color" type="text" id="number1" onkeyup="myFunction()">
                     </div>
   
     </div>
-    <div class="calc">
+    <div class="div3">
         <div class="calc-button">
             <button class="button_bt" value="delite"><==</button>
             <button class="button_bt red" value="ce">CE</button>
-            <button class="button_bt" value=".">.</button>
-            <button class="button_bt" id="multi_id" value="/">:</button>
+            <button class="button_bt" id="percent_id" value="%">%</button>
+            <button class="button_bt blue" id="multi_id" value="/">:</button>
         </div>
         <div class="calc-button">
             <button class="button_bt" id="1_id" value="1">1</button>
             <button class="button_bt" id="2_id" value="2">2</button>
             <button class="button_bt" id="3_id" value="3">3</button>
-            <button class="button_bt" id="x_id" value="*">X</button>
+            <button class="button_bt yellow" id="x_id" value="*">X</button>
         </div>
         <div class="calc-button">
             
             <button class="button_bt" id="4_id" value="4">4</button>
             <button class="button_bt" id="5_id" value="5">5</button>
             <button class="button_bt" id="6_id" value="6">6</button>
-            <button class="button_bt" id="minus" value="-">-</button>
+            <button class="button_bt green" id="minus" value="-">-</button>
         </div>
         <div class="calc-button">
             <button class="button_bt" id="7_id" value="7">7</button>
             <button class="button_bt" id="8_id" value="8">8</button>
             <button class="button_bt" id="9_id" value="9">9</button>
-            <button class="button_bt" id="plus_id" value="+">+</button>
+            <button class="button_bt pink" id="plus_id" value="+">+</button>
         </div>
         <div class="calc-button">
-            <button class="button_bt button_equally" id="equally" value="=">=</button>
+            <button class="button_bt" value=".">.</button>
+            <button class="button_bt" id="0_id" value="0">0</button>
+            <button class="button_bt button_equally grey" id="equally" value="=">=</button>
 
         </div>
     </div>
 </div>
 
 </body>
-<script src="convert.js"></script>
 <script src="keyboard.js"></script>
-
 
 </html>
