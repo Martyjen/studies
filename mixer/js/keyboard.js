@@ -35,18 +35,19 @@ function myFunction() {
 // let simvol = elNumber1.value.replace(/[0-9]/g, ''); //удалить все цивры, получиное передать переменной "simvol"
 
 function calculateResult() {
-    if (elNumber1.value.includes("-")) { // "includes" проверяет сроку на наличие "-", если он присуствует то "true"
-        let [box1, box3] = elNumber1.value.split("-"); //"split" разбивает строку на две отдельные переменных, "box1 и box3", делителем служет символ "-"
-        elNumber1.value = +box1 - +box3;
-    } else if (elNumber1.value.includes("+")) {
-        let [box1, box3] = elNumber1.value.split("+");
-        elNumber1.value = +box1 + +box3;
-    } else if (elNumber1.value.includes("/")) {
-        let [box1, box3] = elNumber1.value.split("/");
-        elNumber1.value = +box1 / +box3;
-    } else if (elNumber1.value.includes("*")) {
-        let [box1, box3] = elNumber1.value.split("*");
-            elNumber1.value = +box1 * +box3;
-    }
+    elNumber1.value = eval(elNumber1.value);
+    // if (elNumber1.value.includes("-")) { // "includes" проверяет сроку на наличие "-", если он присуствует то "true"
+    //     let [box1, box3] = elNumber1.value.split("-"); //"split" разбивает строку на две отдельные переменных, "box1 и box3", делителем служет символ "-"
+    //     elNumber1.value = +box1 - +box3;
+    // } else if (elNumber1.value.includes("+")) {
+    //     let [box1, box3] = elNumber1.value.split("+");
+    //     elNumber1.value = +box1 + +box3;
+    // } else if (elNumber1.value.includes("/")) {
+    //     let [box1, box3] = elNumber1.value.split("/");
+    //     elNumber1.value = +box1 / +box3;
+    // } else if (elNumber1.value.includes("*")) {
+    //     let [box1, box3] = elNumber1.value.split("*");
+    //         elNumber1.value = +box1 * +box3;
+    // }
 }
 

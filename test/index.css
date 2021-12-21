@@ -1,0 +1,25 @@
+.one::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-color: blueviolet;
+}
+P::after {
+    content: "***";
+    display: block;
+    text-align: center;
+}
+a {
+    display: block;
+        background: orange;
+        width: 200px;
+
+    }
+
+a:hover {
+    color: crimson;
+    background-color: rgb(25, 184, 11);
+    width: 600px;
+    transition: all ease 1s;
+}
