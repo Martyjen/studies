@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Salary</title>
+</head>
+<body>
+    <div id="box">    
+      <div><input type="number" class="input_class" id="hour" value="22">>Норма рабочих дней в месяц.</div>
+      <hr>
+    <div><input type="number" class="input_class" id="hour2" value="0">>Количество дней в отпуске. (На больничном или за свой счёт.)</div>
+    <hr>
+    <div><input type="number" class="input_class" id="hour3" value="4.81">>Тариф/час.</div>
+    <hr>
+    <div><input type="number" class="input_class" id="tarif" value="22">>Количество отработанных рабочих дней  (по 8 часов).</div>
+    <hr>
+    <div><input type="number" class="input_class" id="tarif" value="0">>Сумма количества часов за неполные рабочие дни. (За свой счёт или сокращённый рабочий день.)</div>
+    <hr>
+    <div><input type="number" class="input_class" id="prize_resault" value="30">>Премия за производственные результаты. - 30%</div>
+    <hr>
+    <div><input type="number" class="input_class" id="intensity" value="230">>Интенсивность труда.</div>
+    <hr>
+    <div><input type="number" class="input_class" id="professionalism" value="45">>Надбавка за профисиональное мастерство.</div>
+    <hr>
+    <div>
+        <select class="input_class" id="experience">
+        <option value="5">1 год</option>
+        <option value="10">2 года</option>
+        <option value="15">3 года</option>
+        <option selected value="20">5 и более лет.</option>
+      </select>
+      >Надбавка за стаж. 5-20%.
+    </div>
+    <hr>
+    <div><input type="number" class="input_class" id="harmfulness" value="0.278">>Коэффициент - Доплата за вредность.</div>
+    <hr>
+    <div>
+        <select class="input_class" id="managment">
+        <option value="1">Да</option>
+        <option selected value="0">Нет</option>
+      </select>
+      >Руководство бригадой.
+    </div>
+    <hr>
+    <div><input type="number" class="input_class" id="prize">>Единоразовая премия.</div>
+    <hr>
+    <div><input type="number" class="input_class" id="tarif">>Всего начисленно.</div>
+    <hr>
+    <div><button id="button">Посчитать!</button></div>
+</div>
+    
+</body>
+<script src="index.js"></script>
+</html>

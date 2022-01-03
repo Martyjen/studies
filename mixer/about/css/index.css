@@ -5,9 +5,8 @@ body {
     display: grid;
     grid-template-areas: 
     "block-1"
-    "block-2"
-    "block-3";
-    grid-template-rows: 7% 16% 1fr;
+    "block-2";
+    grid-template-rows: 7% 1fr;
     min-height: 98.5vh;
     border: 1px solid;
     border-radius: 4px;
@@ -37,8 +36,8 @@ body {
     border-radius: 4px;
     margin: 5px;
     display: flex;
-      align-items: center;
-      justify-content: center
+    align-items: center;
+    justify-content: center
 
 }
 
@@ -56,43 +55,13 @@ body {
 
 }
 
-.header .text-smol {
-    font-size: 80%;
-}
-.header input {
-    display: block;
-    margin: 1px auto;
-    width: 97%;
-    height: 10vh;
-    background: rgb(207, 232, 252);
-
-}
-
-/* Блок - 3  */
-
-.header .block-3 {
-    text-align: center;
-    border: 1px solid;
-    border-radius: 4px;
-    background: rgb(235, 217, 196);
-    padding: 1%;
-}
-
-.header .button_bt {
-    font-size: 45px;
-    margin: 4px 1px 3px 1px;
-    width: 23%;
-    height: 12vh;
-    border-radius: 12px;
-    box-shadow: 1px 1px 0 #fff, inset 0 1px 1px rgb(0 0 0 / 30%);
-    background: rgb(233, 233, 233);
-}
-.header .button_resault {
-    width: 47%;
+.table {
+    width: 99%;
+    margin: 0 auto;
 }
 
 .header .red {
-    background: rgb(255, 87, 87);
+    background: red;
 }
 
 .header .blue {
@@ -100,7 +69,7 @@ body {
 }
 
 .header .blue1 {
-    background: rgb(156, 226, 253);
+    background: rgb(134, 217, 250);
 }
 
 .header .pink {
@@ -112,28 +81,9 @@ body {
 }
 
 .header .green {
-    background: rgb(91, 255, 112);
+    background: rgb(155, 252, 168);
 }
 
 .header .grey {
     background: rgb(155, 155, 155);
 }
-.header .grey_01 {
-    background: rgb(180, 180, 180);
-}
-
-.header .pink_font {
-    color: rgb(247, 66, 66);
- }
- 
- .header .yellow_font {
-    color: rgb(235, 255, 59);
- }
- 
- .header .green_font {
-    color: rgb(22, 255, 53);
- }
-
- .header .blue_font {
-    color: rgb(15, 187, 255);
-

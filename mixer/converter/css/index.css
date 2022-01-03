@@ -8,7 +8,7 @@ body {
     "block-2"
     "block-3"
     "block-4";
-    grid-template-rows: 7% 1fr 1.3fr 13%;
+    grid-template-rows: 7% 0.9fr 1.3fr 15%;
     min-height: 98.5vh;
     border: 1px solid;
     border-radius: 4px;
@@ -24,7 +24,7 @@ body {
     grid-template-areas: 
     "block-4 block-5 block-6 block-7 block-8";
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    width: 97%;
+    width: 99%;
     border: 1px solid;
     border-radius: 4px;
     margin: 0 auto;
@@ -32,10 +32,14 @@ body {
 }
 
 .header .block-1 #block-4, .header .block-1 #block-5, .header .block-1 #block-6, .header .block-1 #block-7, .header .block-1 #block-8 {
+    font-size: 58%;
     text-align: center;
     border: 1px solid;
     border-radius: 4px;
     margin: 5px;
+    display: flex;
+      align-items: center;
+      justify-content: center
 
 }
 
@@ -61,13 +65,18 @@ body {
     width: 97%;
     height: 5vh;
     background: rgb(207, 232, 252);
+    font-size: 220%;
 }
 
 .color_select {
     margin-top: 1%;
-    width: 97%;
+    width: 41%;
     height: 5vh;
     margin: 1% 0 1% 0;
+    background: rgb(255, 255, 255);
+}
+.block-2 .border p {
+    display: inline;
 }
 
 /* Блок - 3  */
@@ -141,5 +150,15 @@ body {
     height: 6vh;
     border-radius: 12px;
     box-shadow: 1px 1px 0 #fff, inset 0 1px 1px rgb(0 0 0 / 30%);
+}
+
+.b-popup-content{
+    margin:40px auto 0px auto;
+    width:100px;
+    height: 40px;
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
 }
 
