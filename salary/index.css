@@ -1,0 +1,22 @@
+
+.tarif-day-hour1 {
+
+    display: inline;
+    margin: 2px;
+    font-size: 12px;
+    margin-right: 2%;
+}
+
+.box {
+    margin-bottom: 0.5%;
+    border: 2px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+input {
+    width: 55px
+}
+

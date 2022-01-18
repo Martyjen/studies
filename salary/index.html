@@ -1,56 +1,91 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Salary</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Salary</title>
 </head>
+
 <body>
-    <div id="box">    
-      <div><input type="number" class="input_class" id="hour" value="22">>Норма рабочих дней в месяц.</div>
-      <hr>
-    <div><input type="number" class="input_class" id="hour2" value="0">>Количество дней в отпуске. (На больничном или за свой счёт.)</div>
-    <hr>
-    <div><input type="number" class="input_class" id="hour3" value="4.81">>Тариф/час.</div>
-    <hr>
-    <div><input type="number" class="input_class" id="tarif" value="22">>Количество отработанных рабочих дней  (по 8 часов).</div>
-    <hr>
-    <div><input type="number" class="input_class" id="tarif" value="0">>Сумма количества часов за неполные рабочие дни. (За свой счёт или сокращённый рабочий день.)</div>
-    <hr>
-    <div><input type="number" class="input_class" id="prize_resault" value="30">>Премия за производственные результаты. - 30%</div>
-    <hr>
-    <div><input type="number" class="input_class" id="intensity" value="230">>Интенсивность труда.</div>
-    <hr>
-    <div><input type="number" class="input_class" id="professionalism" value="45">>Надбавка за профисиональное мастерство.</div>
-    <hr>
-    <div>
-        <select class="input_class" id="experience">
-        <option value="5">1 год</option>
-        <option value="10">2 года</option>
-        <option value="15">3 года</option>
-        <option selected value="20">5 и более лет.</option>
-      </select>
-      >Надбавка за стаж. 5-20%.
+  <div>
+    <div class="box">
+      <div class="tarif-day-hour1">Должность.
+        <div>
+          <select class="input_class" id="harmfulness">
+            <option value="0.3906">Сварщик</option>
+            <option selected value="0.278">Слесарь МСР</option>
+          </select>
+        </div>
+      </div>
+      <div class="tarif-day-hour1">Тариф/час.
+        <div><input type="number" id="hour" class="input_class" value="4.81"></div>
+      </div>
+      <div class="tarif-day-hour1">Стаж.<div>
+          <select class="input_class" id="experience">
+            <option value="5">1 год</option>
+            <option value="10">2 года</option>
+            <option value="15">3 года</option>
+            <option selected value="20">5 и более лет.</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <hr>
-    <div><input type="number" class="input_class" id="harmfulness" value="0.278">>Коэффициент - Доплата за вредность.</div>
-    <hr>
-    <div>
-        <select class="input_class" id="managment">
-        <option value="1">Да</option>
-        <option selected value="0">Нет</option>
-      </select>
-      >Руководство бригадой.
+    <div class="box">
+      <div class="tarif-day-hour1">Норма рабочих дней в месяц.
+        <div><input type="number" id="day_rate" class="input_class" value="22"></div>
+      </div>
+      <div class="tarif-day-hour1">Руководство бригадой.
+        <div>
+          <select class="input_class" id="managment">
+            <option value="1">Да</option>
+            <option selected value="0">Нет</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <hr>
+    <div class="tarif-day-hour1">>Количество отработанных рабочих дней (по 8 часов).<div><input type="number"
+          class="input_class" id="worked_day" value="22"></div>
+    </div>
+    <div class="tarif-day-hour1">Сумма количества часов за неполные рабочие дни. (За свой счёт или сокращённый рабочий
+      день.)<div><input type="number" class="input_class" id="tarif_no_day" value="0"></div>
+    </div>
+
+    <div class="tarif-day-hour1">Количество дней в отпуске. (На больничном или за свой счёт.)<div><input type="number"
+          class="input_class" id="vacation_day" value="0"></div>
+    </div>
+    <div class="tarif-day-hour1">Профмастерство.<div><input type="number" class="input_class" id="professionalism"
+          value="45"></div>
+    </div>
+
     <div><input type="number" class="input_class" id="prize">>Единоразовая премия.</div>
     <hr>
-    <div><input type="number" class="input_class" id="tarif">>Всего начисленно.</div>
-    <hr>
-    <div><button id="button">Посчитать!</button></div>
+    <div class="box">
+      <div class="tarif-day-hour1">Количество детей<div>
+          <select class="input_class" id="childrenId">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option selected value="0">Нет</option>
+          </select>
+        </div>
+      </div>
+    </div>
+<div class="box">
+  <div class="tarif-day-hour1"> Всего начисленно.<div><input type="number" class="input_class" id="resault"
+    ></div>
 </div>
-    
+  <div class="tarif-day-hour1">К выплате.<div><input type="number" class="input_class" id="resaultClear"
+    ></div>
+</div>
+</div>
+<hr>
+    <div><button class="input_class" id="button">Посчитать!</button></div>
+  </div>
+
 </body>
 <script src="index.js"></script>
+
 </html>

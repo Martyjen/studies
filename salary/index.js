@@ -1,48 +1,60 @@
 let box = document.querySelectorAll(".input_class");
-let button = document.querySelector("#button");
-let resault;
+
+let prizeResaultId = 30; //Премия 30%.
+let intensityId = 230; //Интенсивность.
+let childrenVl = 37; //
+let resaultVl;
+
+
 button.addEventListener('click', function () {
 
-let summ = +box[3].value * 8; // Часов за полные дни
+let summ = +worked_day.value * 8; // Часов за полные дни
 
-if (box[4].value > 0) {
-    var summHourDay = summ + +box[4].value; // Сумма часов за все дни.
+if (tarif_no_day.value > 0) {
+    var summHourDay = summ + +tarif_no_day.value; // Сумма часов за все дни.
 } else {
    var summHourDay = summ;
 }
 
-let summHour = +box[2].value * summHourDay; // оплата по тарифу. сумма всех часов и умноженые на тариф час.
+let summHour = +hour.value * +summHourDay; // оплата по тарифу. сумма всех часов и умноженые на тариф час.
+let prizeResault = +summHour / 100 * +prizeResaultId; // ежемесячная премия.
+let summHourIntensity = +intensityId / +day_rate.value * (+day_rate.value - +vacation_day.value); //Интенсивность. Кофицент 10.45 (230 рублей / месяц).
+let professionalismVl = +summHour / 100 * +professionalism.value; //Профмастерство.
+let experienceVl = +summHour / 100 * +experience.value; //За стаж.
+let harmfulnessVl = +summHourDay * +harmfulness.value; //За вредность. Кофицент 0.278.
 
-
-
-let prizeResault = summHour / 100 * +box[5].value; // ежемесячная премия.
-let summHourIntensity = +box[6].value / +box[0].value * (+box[0].value - +box[1].value); //Интенсивность. Кофицент 10.45 (230 рублей / месяц).
-let professionalism = summHour / 100 * +box[7].value; //Профмастерство.--------------
-let experience = summHour / 100 * +box[8].value; //За стаж. --------------------
-let harmfulness = summHourDay * +box[9].value; //За вредность. Кофицент 0.278. ---------
-
-if (box[10].value > 0) {
-    var managment = summHour / 100 * +box[8].value; // Бригадир.
-    resault = summHour + prizeResault + professionalism + experience + harmfulness + summHourIntensity + managment;
+if (managment.value > 0) {
+    var managmentVl = summHour / 100 * +experience.value; // Бригадир.
+    resaultVl = summHour + prizeResault + professionalismVl + experienceVl + harmfulnessVl + summHourIntensity + managmentVl;
 } else {
-    resault = summHour + prizeResault + professionalism + experience + harmfulness + summHourIntensity;
+    resaultVl = summHour + prizeResault + professionalismVl + experienceVl + harmfulnessVl + summHourIntensity;
 }
 
-// let resault = summHour + prizeResault + professionalism + experience + harmfulness + summHourIntensity + managment;
+let childrenDel = +childrenId.value * childrenVl * 0.13; //Налоговые вычеты на детей.
 
-box[12].value = resault;
+if (childrenId.value > 0) {
+    let childrenSumm = +childrenVl * +childrenId.value;
+    resaultClear.value = +resaultVl - (+resaultVl - +childrenSumm) * 0.13; //Грязные с вычетом налогов за ребёнка.
+    resault.value = +resaultVl; //Результат грязными.
+  } else {
+    resaultClear.value = +resaultVl / 100 * 86 ; //Чистыми, на руки.
+    resault.value = +resaultVl; //Результат грязными.
+  }
 
-console.log(resault + " -Грязные");
 
+
+console.log(resaultClear.value + " -Чистыми, на руки");
+console.log(resault.value + " -Грязные");
 console.log(summHour + " - Оплата по часавому тарифу - полный месяц");
 console.log(prizeResault + " - Премия за производственные результаты. Ежемесечкая премия");
-console.log(summHour + " - Сумма часов за неполные дни.");
 console.log(summHourDay + " - Сумма часов за все дни.");
 console.log(summHourIntensity + " - Интенсивность. (230 рублей / месяц)");
-console.log(professionalism + " - Профмастерство");
-console.log(experience + " - За стаж.");
-console.log(harmfulness + " - За вредность. Кофицент 3.584.");
-console.log(managment + " - Руководство бригадой");
+console.log(professionalism.value + " - Профмастерство");
+console.log(experience.value + " - За стаж.");
+console.log(harmfulness.value + " - За вредность. Кофицент 3.584.");
+console.log(managment.value + " - Руководство бригадой");
+console.log(childrenDel + " - Налоговые вычаты на детей. ");
+
 });
 
 
