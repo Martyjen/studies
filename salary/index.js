@@ -1,19 +1,17 @@
 let box = document.querySelectorAll(".input_class");
-
 let prizeResaultId = 30; //Премия 30%.
 let intensityId = 230; //Интенсивность.
 let childrenVl = 37; //
 let resaultVl;
-
 
 button.addEventListener('click', function () {
 
 let summ = +worked_day.value * 8; // Часов за полные дни
 
 if (tarif_no_day.value > 0) {
-    var summHourDay = summ + +tarif_no_day.value; // Сумма часов за все дни.
+    var summHourDay = +summ + +tarif_no_day.value; // Сумма часов за все дни.
 } else {
-   var summHourDay = summ;
+   var summHourDay = +summ;
 }
 
 let summHour = +hour.value * +summHourDay; // оплата по тарифу. сумма всех часов и умноженые на тариф час.
@@ -25,10 +23,11 @@ let harmfulnessVl = +summHourDay * +harmfulness.value; //За вредность
 
 if (managment.value > 0) {
     var managmentVl = summHour / 100 * +experience.value; // Бригадир.
-    resaultVl = summHour + prizeResault + professionalismVl + experienceVl + harmfulnessVl + summHourIntensity + managmentVl;
+    resaultVl = +summHour + +prizeResault + +professionalismVl + +experienceVl + +harmfulnessVl + +summHourIntensity + +managmentVl + +prizeId.value;
 } else {
-    resaultVl = summHour + prizeResault + professionalismVl + experienceVl + harmfulnessVl + summHourIntensity;
+    resaultVl = +summHour + +prizeResault + +professionalismVl + +experienceVl + +harmfulnessVl + +summHourIntensity + +prizeId.value;
 }
+
 
 let childrenDel = +childrenId.value * childrenVl * 0.13; //Налоговые вычеты на детей.
 
