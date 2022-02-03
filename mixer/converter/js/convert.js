@@ -20,7 +20,6 @@ function optionsId() {
 }
 
 // Конвертер.
-
 function convertingValues() {
     if (elSelect1.value < elSelect2.value) {
         resault.value = elSelect1.value / elNumber1.value / elSelect2.value;
@@ -30,7 +29,6 @@ function convertingValues() {
 }
 
 //Сравнивает значения в select, Если значение одинаковое, меняет значение на +1 в select2.
-
 elSelect1.addEventListener('change', function () {
     noDuble()
 });
@@ -41,7 +39,6 @@ function noDuble() {
     selectOption();
     convertingValues();
     noInfinityNan()
-
 }
 
 // Не позволяет выбрать одинаковый пункт (Option) в меню (Select).
