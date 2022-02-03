@@ -1,8 +1,24 @@
-let elNumber1 = "fj32+33f"
+let inputId = document.getElementById("input_id");
+let buttonId = document.getElementById("button_id");
+
+buttonId.addEventListener('click', function () {
+  inputId.value = eval(inputId.value);
+});
 
 
-  if (elNumber1[0] == "3" || elNumber1[0] ==  "a" || elNumber1[0] ==  "h") {
-    console.log('No');
-  } else {
-      console.log('okey');
+function noTochek() {
+  var tochka = 0;
+  for (let i = 0; i < inputId.value.length; ++i) {
+      let simvol = inputId.value[i];
+      if (simvol == ".") {
+          ++tochka;
+          if (tochka == 2) {
+              var stringValue = inputId.value;
+              inputId.value = stringValue.slice(0, -1);
+          }
+      } else if (simvol == "+" || simvol == "-" || simvol == "*" || simvol == "/") {
+          tochka = 0;
+     }
+
   }
+}

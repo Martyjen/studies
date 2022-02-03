@@ -25,8 +25,9 @@ for (let i = 0; i < divCalc.length; i++) {
             elNumber1.value += keyValue;
             onInput();
             noZnaki();
+            noTochek();
         }
-        if (String(elNumber1.value) === "Infinity") {
+        if (String(elNumber1.value) === " Infinity" || String(elNumber1.value) === " -Infinity") {
             elNumber1.value = "Делить на 0 нельзя!!!";
         }
     });
@@ -57,7 +58,6 @@ function calculateResult() {
 //Запрет ввода первым символом + - * /.
 function onInput() {
     if (elNumber1.value[0] == '+' || elNumber1.value[0] == "-" || elNumber1.value[0] == "/" || elNumber1.value[0] == "*") {
-        console.log('errore');
         var stringValue = elNumber1.value;
         elNumber1.value = stringValue.slice(0, -1);
     }
@@ -69,6 +69,8 @@ function noZnaki() {
     let stringVlMinusOne = elNumber1.value.length - 2;
     let a = elNumber1.value[stringVl];
     let b = elNumber1.value[stringVlMinusOne];
+    // console.log(a + " a");
+    // console.log(b + " b");
     if (a + b == "++"
         || a + b == "--"
         || a + b == "**"
@@ -84,9 +86,35 @@ function noZnaki() {
         || a + b == "-/"
         || a + b == "/-"
         || a + b == "*/"
-        || a + b == "/*") {
+        || a + b == "/*"
+        || a + b == "-*"
+        || a + b == "-/"
+        || a + b == "-."
+        || a + b == "*."
+        || a + b == "/."
+        || a + b == "+.") {
         var stringValue = elNumber1.value;
         elNumber1.value = stringValue.slice(0, -1);
+    }
+}
+
+
+//Запрет двух точек
+
+function noTochek() {
+    var tochka = 0;
+    for (let i = 0; i < elNumber1.value.length; ++i) {
+        let simvol = elNumber1.value[i];
+        if (simvol == ".") {
+            ++tochka;
+            if (tochka == 2) {
+                var stringValue = elNumber1.value;
+                elNumber1.value = stringValue.slice(0, -1);
+            }
+        } else if (simvol == "+" || simvol == "-" || simvol == "*" || simvol == "/") {
+            tochka = 0;
+        }
+
     }
 }
 
