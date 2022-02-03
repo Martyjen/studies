@@ -1,33 +1,47 @@
-let box = document.querySelectorAll(".input_class");
-let prizeResaultId = 30; //Премия 30%.
-let intensityId = 230; //Интенсивность.
-let childrenVl = 37; //
-let managmentVl = 0; //Бригадир.
 let resaultVl;
+
+// Проверка на ввод данных в настройках.
+if (intensityId.value
+  && hour.value
+  && professionalism.value
+  && childrenId.value
+  && harmfulness.value
+  && experience.value
+  && prizeResaultId.value >= 0) {
+  document.querySelector("#no-profile").innerHTML = "";
+} else {
+  document.querySelector("#no-profile").innerHTML =
+    "<hr> <font  color=red> Для начала работы с приложением, настройте профиль!</font> <font  color=blue>Нажмите на шестерёнку справа вверху. </font></p6> <hr>  ";
+  img_set_id.style.background = 'red';
+  document.querySelector("#no-profile").style.background = 'yellow';
+}
+
 
 button.addEventListener('click', function (e) {
 
-  let summ = +worked_day.value * 8; // Часов за полные дни.
+  let summ = +worked_day.value * 8; // Сумма времени за полные дни.
 
   if (tarif_no_day.value > 0) {
-    var summHourDay = +summ + +tarif_no_day.value; // Сумма часов за все дни.
+    var summHourDay = +summ + +tarif_no_day.value; // Сумма времени за все дни.
   } else {
     var summHourDay = +summ;
   }
 
   let childrenDel = +childrenId.value * childrenVl * 0.13; //Налоговые вычеты на детей.
   let summHour = +hour.value * +summHourDay; // оплата по тарифу. сумма всех часов и умноженые на тариф час.
-  let prizeResault = +summHour / 100 * +prizeResaultId; // ежемесячная премия.
-  let summHourIntensity = +intensityId / +day_rate.value * (+day_rate.value - +vacation_day.value); //Интенсивность. Кофицент 10.45 (230 рублей / месяц).
+
+  let prizeResault = +summHour / 100 * +prizeResaultId.value; // ежемесячная премия.
+  let summHourIntensity = +intensityId.value / +day_rate.value * (+day_rate.value - +vacation_day.value); //Интенсивность. Кофицент 10.45 (230 рублей / месяц).
   let professionalismVl = +summHour / 100 * +professionalism.value; //Профмастерство.
   let experienceVl = +summHour / 100 * +experience.value; //За стаж.
   let harmfulnessVl = +summHourDay * +harmfulness.value; //За вредность. Кофицент 0.278.
 
   if (managment.value > 0) {
-    managmentVl = summHour / 100 * +experience.value; // Бригадир.
+    managmentVl = summHour / 100 * +managmentPrize.value; // Бригадир.
     resaultVl = +summHour + +prizeResault + +professionalismVl + +experienceVl + +harmfulnessVl + +summHourIntensity + +managmentVl + +prizeId.value;
   } else {
     resaultVl = +summHour + +prizeResault + +professionalismVl + +experienceVl + +harmfulnessVl + +summHourIntensity + +prizeId.value;
+    managmentVl = 0;
   }
 
   if (childrenId.value > 0) {
@@ -42,15 +56,18 @@ button.addEventListener('click', function (e) {
   resault = resaultPr.toFixed(2)
 
   //==============Расчёт====================
-let totalResault = resaultVl * 0.13;
-let retirementTax = resaultVl * 0.01
+  let totalResault = resaultVl * 0.13;
+  let retirementTax = resaultVl * 0.01
 
-e.preventDefault();
-page();
-function page () {
-     total.innerHTML =
-    "<img src=./logo.png>" + "<br> <hr>" +
-    "<br> <font  color=green> Начислено:</font> <br>" +
+  e.preventDefault();
+  page();
+
+  // Вывод подсчётов.
+
+  function page() {
+    total.innerHTML =
+      "<img src=./logo.png>" + "<br> <hr>" +
+      "<br> <font  color=green> Начислено:</font> <br>" +
       "<br>" + prizeResault.toFixed(2) + " - Премия за производственные результаты." +
       "<br>" + summHourIntensity.toFixed(2) + " - Интенсивность." +
       "<br>" + summHour.toFixed(2) + " - Оплата по часовому тарифу." +
@@ -62,12 +79,12 @@ function page () {
       "<br>" + totalResault.toFixed(2) + " - Подоходный налог." +
       "<br>" + retirementTax.toFixed(2) + " - Пенсионный налог." +
       "<hr> <font color=red> Всего начислено: </font>" + resault + "<font  color=green> || К выплате: </font>" + resaultClear;
-      
-};
-    overlay.style.display = 'block';
 
-      
+  };
+  overlay.style.display = 'block';
 
+
+  //Проверка консольная
   console.log(resaultClear + " -Чистыми, на руки");
   console.log(resault + " -Грязные");
   console.log(summHour + " - Оплата по часавому тарифу - полный месяц");
@@ -84,10 +101,10 @@ function page () {
 }, false);
 
 
-overlay.addEventListener('click', function(e){
-  if( e.target === this ) {
-      this.style.display = 'none';
-}
+overlay.addEventListener('click', function (e) {
+  if (e.target === this) {
+    this.style.display = 'none';
+  }
 }, false);
 
 

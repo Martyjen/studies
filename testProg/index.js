@@ -1,15 +1,8 @@
-var a = document.getElementById('buttonId');
+let elNumber1 = "fj32+33f"
 
-  a.addEventListener('click', function(e) {
-    e.preventDefault();
-    modal.innerHTML = "this.href";
-    overlay.style.display = 'block';
-  }, false);
 
- 
- 
-overlay.addEventListener('click', function(e){
-    if( e.target === this ) {
-        this.style.display = 'none';
+  if (elNumber1[0] == "3" || elNumber1[0] ==  "a" || elNumber1[0] ==  "h") {
+    console.log('No');
+  } else {
+      console.log('okey');
   }
-}, false);

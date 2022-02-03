@@ -10,8 +10,13 @@
 
 <body>
   <div id="contener">
-    <div class="box">
-      <div class="tarif-day-hour1">Должность.
+    <div id="menu_id">
+      <div id="border_id"><img class="img_logo" src="./logo_img.png" alt="logo"></div>
+      <div id="border_id"><a href="./setting.html"><img id="img_set_id" class="img_set" src="./setting.png" alt="Настройки" ></a></div>
+    </div>
+<div id="no-profile"></div>
+    <div class="box noBlock">
+      <div class="tarif-day-hour1 noBlock">Должность.
         <div>
           <select class="input_class" id="harmfulness">
             <option value="0.3906">Сварщик</option>
@@ -19,11 +24,12 @@
           </select>
         </div>
       </div>
-      <div class="tarif-day-hour1">Тариф/час.
+      <div class="tarif-day-hour1 noBlock">Тариф/час.
         <div><input type="number" id="hour" class="input_class" value="4.78"></div>
       </div>
-      <div class="tarif-day-hour1">Стаж.<div>
+      <div class="tarif-day-hour1 noBlock">Стаж.<div>
           <select class="input_class" id="experience">
+            <option value="1">Меньше года.</option>
             <option value="5">1 год</option>
             <option value="10">2 года</option>
             <option value="15">3 года</option>
@@ -36,7 +42,7 @@
       <div class="tarif-day-hour1">Норма рабочих дней в месяц.
         <div><input type="number" id="day_rate" class="input_class" value="22"></div>
       </div>
-      <div class="tarif-day-hour1">Руководство бригадой.
+      <div class="tarif-day-hour1 noBlock">Руководство бригадой.
         <div>
           <select class="input_class" id="managment">
             <option value="1">Да</option>
@@ -44,7 +50,20 @@
           </select>
         </div>
       </div>
+      <div class="tarif-day-hour1 noBlock">Надбавка за бригадирство - %.
+        <div><input type="number" id="managmentPrize" class="input_class" value="10"></div>
+      </div>
     </div>
+
+
+    <div class="tarif-day-hour1 noBlock">Ежемесячная премия - %.<div><input type="number" class="input_class"
+          id="prizeResaultId" value="30"></div>
+    </div>
+    <div class="tarif-day-hour1 noBlock">Интенсивность за полный месяц.<div><input type="number" class="input_class"
+          id="intensityId" value="230"></div>
+    </div>
+
+
     <div class="tarif-day-hour1">Количество отработанных рабочих дней (по 8 часов).<div><input type="number"
           class="input_class" id="worked_day" value="22"></div>
     </div>
@@ -55,15 +74,15 @@
     <div class="tarif-day-hour1">Количество дней в отпуске. (На больничном или за свой счёт.)<div><input type="number"
           class="input_class" id="vacation_day" value="0"></div>
     </div>
-    <div class="tarif-day-hour1">Профмастерство.<div><input type="number" class="input_class" id="professionalism"
-          value="45"></div>
+    <div class="tarif-day-hour1 noBlock">Профмастерство.<div><input type="number" class="input_class"
+          id="professionalism" value="45"></div>
     </div>
 
-    <div class="tarif-day-hour1">Единоразовая премия.<div><input type="number" class="input_class" id="prizeId" value="0"></div>
-  </div>
-    <hr>
-    <div class="box">
-      <div class="tarif-day-hour1">Количество детей<div>
+    <div class="tarif-day-hour1">Единоразовая премия.<div><input type="number" class="input_class" id="prizeId"
+          value="0"></div>
+    </div>
+    <div class="box noBlock">
+      <div class="tarif-day-hour1 noBlock">Количество детей<div>
           <select class="input_class" id="childrenId">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -75,20 +94,21 @@
       </div>
     </div>
 
-<hr>
+    <hr>
     <div><button class="input_class" id="button">Посчитать!</button></div>
   </div>
   <hr>
   <div id="overlay">
     <div id="modal">
-   <div class="input_class" id="imageId"></div>
-  <div class="input_class tarif-day-hour" id="total"></div>
-  <div class="input_class tarif-day-hour" id="detal"></div>
-</div>
-</div>
-  
+      <div class="input_class" id="imageId"></div>
+      <div class="input_class tarif-day-hour" id="total"></div>
+      <div class="input_class tarif-day-hour" id="detal"></div>
+    </div>
+  </div>
+
 
 </body>
+<script src="indexSet.js"></script>
 <script src="index.js"></script>
 
 </html>

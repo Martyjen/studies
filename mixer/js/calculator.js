@@ -1,15 +1,14 @@
 let divCalc = document.querySelectorAll(".button_bt"); //Получил массив кнопок с классом ".button_bt".
 var elNumber1 = document.getElementById('number1');
 
-
 for (let i = 0; i < divCalc.length; i++) {
 
     divCalc[i].addEventListener('click', function (event) {
-        myFunction()
+        myFunction();
+
         if (elNumber1.value === "Делить на 0 нельзя!!!") {
             elNumber1.value = "";
         }
-
         if (event.path[0].value === "ce") {
             elNumber1.value = "";
         }
@@ -18,35 +17,77 @@ for (let i = 0; i < divCalc.length; i++) {
             elNumber1.value = stringValue.slice(0, -1);
         }
         else if (event.path[0].value == "=") {
-            calculateResult()
+            calculateResult();
+            noUndefined();
         }
         else {
-
             let keyValue = event.path[0].value;
             elNumber1.value += keyValue;
+            onInput();
+            noZnaki();
         }
-
         if (String(elNumber1.value) === "Infinity") {
             elNumber1.value = "Делить на 0 нельзя!!!";
-            console.log(typeof elNumber1.value);
         }
-
     });
+}
 
+function noUndefined() {
+    if (String(elNumber1.value) === " undefined") {
+        elNumber1.value = "";
+    } else if (String(elNumber1.value) === " 46938") {
+        elNumber1.value = "Mixer: v 0.3 - Немоквич Евгений.";
+    }
 }
 
 //Уменьшает размер символов в "input". ========================
-
 function myFunction() {
-    var x = elNumber1;
-    var initialSize = 37 - x.value.length;
-    initialSize = initialSize <= 28 ? 28 : initialSize;
-    x.style.fontSize = initialSize + "px";
+    var initialSize = 50 - elNumber1.value.length;
+    initialSize = initialSize <= 25 ? 25 : initialSize;
+    elNumber1.style.fontSize = initialSize + "px";
+    console.log(elNumber1.style.fontSize);
 }
 
-//Вычисление.---------------------------------------------
-
+//Вычисление.
 function calculateResult() {
     elNumber1.value = eval(elNumber1.value);
+    elNumber1.value = " " + elNumber1.value; // добавляет пробел в начало строки.
 }
+
+//Запрет ввода первым символом + - * /.
+function onInput() {
+    if (elNumber1.value[0] == '+' || elNumber1.value[0] == "-" || elNumber1.value[0] == "/" || elNumber1.value[0] == "*") {
+        console.log('errore');
+        var stringValue = elNumber1.value;
+        elNumber1.value = stringValue.slice(0, -1);
+    }
+}
+
+//Запрет двух символов подряд.
+function noZnaki() {
+    let stringVl = elNumber1.value.length - 1;
+    let stringVlMinusOne = elNumber1.value.length - 2;
+    let a = elNumber1.value[stringVl];
+    let b = elNumber1.value[stringVlMinusOne];
+    if (a + b == "++"
+        || a + b == "--"
+        || a + b == "**"
+        || a + b == "//"
+        || a + b == "+-"
+        || a + b == "-+"
+        || a + b == "*+"
+        || a + b == "+*"
+        || a + b == "/+"
+        || a + b == "+/"
+        || a + b == "-*"
+        || a + b == "*-"
+        || a + b == "-/"
+        || a + b == "/-"
+        || a + b == "*/"
+        || a + b == "/*") {
+        var stringValue = elNumber1.value;
+        elNumber1.value = stringValue.slice(0, -1);
+    }
+}
+
 

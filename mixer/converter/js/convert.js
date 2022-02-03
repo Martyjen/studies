@@ -4,6 +4,8 @@ let elButton = document.getElementById('button_Id');
 let elSelect1 = document.getElementById('select1_id');
 let elSelect2 = document.getElementById('select2_id');
 let divCalc = document.querySelectorAll(".button_bt"); // Получаю массив кнопок.
+let k = 0;
+let xxx = 0;
 
 optionsId(); // Запускает функцию добовления параметров Option для Select. // переменная "converter" подключена отдельно: Папка base - файл "base.js"
 selectOption(); // Не допускает одинаковые параметры у Select1 и Select2;
@@ -32,15 +34,16 @@ function convertingValues() {
 //Сравнивает значения в select, Если значение одинаковое, меняет значение на +1 в select2.
 
 elSelect1.addEventListener('change', function () {
-    noDuble ()
+    noDuble()
 });
 elSelect2.addEventListener('change', function () {
-    noDuble ()
+    noDuble()
 });
-function noDuble (){
+function noDuble() {
     selectOption();
     convertingValues();
     noInfinityNan()
+
 }
 
 // Не позволяет выбрать одинаковый пункт (Option) в меню (Select).
@@ -53,10 +56,20 @@ function selectOption() {
     }
 }
 
-// Сравнивает значения NaN и Infinity. В случаи обноружения, удаляет их.
+// Сравнивает значения NaN и Infinity. В случаи обноружения, очищает input.
 function noInfinityNan() {
     if (String(resault.value) == "Infinity" || String(resault.value) == "NaN") {
         resault.value = "";
+    }
+}
+
+
+
+for (let i = 0; i < elNumber1.value.length; ++i) {
+    var simbol = elNumber1.value[i];
+    if (simbol == "..") {
+        elNumber1.value = simbol.slice(0, -1);
+
     }
 }
 
@@ -65,23 +78,44 @@ function noInfinityNan() {
 for (let i = 0; i < divCalc.length; i++) {
 
     divCalc[i].addEventListener('click', function (event) {
+
         if (event.path[0].value === "ce") {
             let keyValue = "";
             elNumber1.value = keyValue;
             resault.value = keyValue;
+            k = 0;
+            noTochka();
         }
         else if (event.path[0].value === "delite") {
             let stringValue = elNumber1.value;
             elNumber1.value = stringValue.slice(0, -1);
+            --k;
+            noTochka();
             convertingValues();
         }
         else {
             let keyValue = event.path[0].value;
             elNumber1.value += keyValue;
+            noTochka();
             convertingValues();
         }
         noInfinityNan()
     });
 }
 
+//Запрет ввода двух и более точек.
 
+function noTochka() {
+    for (; k < elNumber1.value.length; ++k) {
+        if ("." == elNumber1.value[k]) {
+            ++xxx;
+
+            if (xxx >= 2) {
+                elNumber1.value = elNumber1.value.slice(0, -1);
+                k = 0;
+                xxx = 0;
+                break
+            }
+        }
+    }
+}
