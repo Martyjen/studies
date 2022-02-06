@@ -1,0 +1,104 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+
+
+#menu_id {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px 10px 10px;
+    
+    
+   }
+   #border_id {
+    margin: 0px 00px 0px 26px;
+   }
+
+   .img_set {
+       width: 60%;
+       border-radius: 6px;
+       background-color: rgb(223, 223, 223);
+   }
+   .img_logo {
+       width: 90%;
+       border-radius: 6px;
+       background-color: rgb(255, 255, 255);
+   }
+   .img_ind {
+    width: 60%;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+   }
+
+.tarif-day-hour1 {
+
+    display: inline;
+    margin: 2px;
+    font-size: 12px;
+    margin-right: 2%;
+}
+
+.tarif-day-hour {
+
+    font-size: 70%;
+
+}
+
+#contener {
+
+    font-size: 14px;
+
+}
+
+.box {
+    margin-bottom: 0.5%;
+    border: 2px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+input {
+    width: 55px
+}
+
+.noBlock {
+    display: none;
+}
+
+img {
+text-align: center;
+    width: 92%;
+}
+
+/* 555555 */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, .2);
+    text-align: center;
+  }
+   
+  #overlay:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.36em;
+  }
+   
+  #modal {
+    display: inline-block;
+    padding: 20px;
+    background: #fff;
+    vertical-align: middle;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 4px rgba(0, 0, 0, .2);
+  }

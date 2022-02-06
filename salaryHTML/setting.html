@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Setting</title>
+</head>
+
+<body>
+  <div id="contener">
+    <div id="menu_id">
+      <div id="border_id"><img class="img_logo" src="./logo_img.png" alt="logo"></div>
+      <div id="border_id"><a href="./index.html"><img class="img_ind" src="./pngegg.png" alt="Настройки" ></a></div>
+    </div>
+    <div class="box">
+      <div class="tarif-day-hour1">Должность.
+        <div>
+          <select class="input_class" id="harmfulness">
+            <option value="0.3906">Сварщик</option>
+            <option selected value="0.278988">Слесарь МСР</option>
+          </select>
+        </div>
+      </div>
+      <div class="tarif-day-hour1">Тариф/час.
+        <div><input type="number" id="hour" class="input_class" value="4.78"></div>
+      </div>
+      <div class="tarif-day-hour1">Стаж.<div>
+          <select class="input_class" id="experience">
+            <option value="1">Меньше года.</option>
+            <option value="5">1 год</option>
+            <option value="10">2 года</option>
+            <option value="15">3 года</option>
+            <option selected value="20">5 и более лет.</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="tarif-day-hour1">Интенсивность за полный месяц.<div><input type="number"
+      class="input_class" id="intensityId" value="230"></div>
+</div>
+    <div class="tarif-day-hour1">Профмастерство.<div><input type="number" class="input_class" id="professionalism"
+          value="45"></div>
+    </div>
+    <div class="tarif-day-hour1">Ежемесячная премия - %.<div><input type="number" class="input_class" id="prizeResaultId"
+          value="30"></div>
+    </div>
+    <hr>
+    <div class="box">
+      <div class="tarif-day-hour1">Количество детей<div>
+          <select class="input_class" id="childrenId">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option selected value="0">Нет</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="tarif-day-hour1">Руководство бригадой.
+        <div>
+          <select class="input_class" id="managment">
+            <option value="1">Да</option>
+            <option selected value="0">Нет</option>
+          </select>
+        </div>
+      </div>
+      <div class="tarif-day-hour1">Надбавка за бригадирство - %.
+        <div><input type="number" id="managmentPrize" class="input_class" value="10"></div>
+      </div>
+    </div>
+
+<hr>
+    <button id="button_st" class="input_class">Сохранить настройки.</button>
+    <button id="button_rst" class="input_class">Сбросить все настройки.</button>
+  </div>
+
+</body>
+<script src="indexSet.js"></script>
+
+</html>

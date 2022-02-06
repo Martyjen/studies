@@ -67,7 +67,6 @@ for (let i = 0; i < elNumber1.value.length; ++i) {
 }
 
 // Клавиатура ==============================================
-
 for (let i = 0; i < divCalc.length; i++) {
 
     divCalc[i].addEventListener('click', function (event) {
@@ -81,13 +80,13 @@ for (let i = 0; i < divCalc.length; i++) {
         else if (event.path[0].value === "delite") {
             let stringValue = elNumber1.value;
             elNumber1.value = stringValue.slice(0, -1);
-            noTochka();
+            noDubbleDot();
             convertingValues();
         }
         else {
             let keyValue = event.path[0].value;
             elNumber1.value += keyValue;
-            noTochka();
+            noDubbleDot();
             convertingValues();
         }
         noInfinityNan()
@@ -95,8 +94,7 @@ for (let i = 0; i < divCalc.length; i++) {
 }
 
 //Запрет ввода двух и более точек.
-
-function noTochka() {
+function noDubbleDot() {
     var tochka = 0;
     for (let i = 0; i < elNumber1.value.length; ++i) {
         let simvol = elNumber1.value[i];
@@ -106,6 +104,6 @@ function noTochka() {
                 var stringValue = elNumber1.value;
                 elNumber1.value = stringValue.slice(0, -1);
             }
-        } 
+        }
     }
 }
