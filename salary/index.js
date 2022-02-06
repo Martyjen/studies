@@ -76,23 +76,25 @@ button.addEventListener('click', function (e) {
 
   function page() {
     total.innerHTML =
-      "<img src=./logo.png>" + " <hr>" +
-      "<font  color=green> Начислено:</font> <br>" +
-      "<br>" + prizeResault.toFixed(2) + " - Премия за производственные результаты." +
-      "<br>" + summHourIntensity.toFixed(2) + " - Интенсивность." +
-      "<br>" + summHour.toFixed(2) + " - Оплата по часовому тарифу." +
-      "<br>" + professionalismVl.toFixed(2) + " - Профмастерство " + professionalism.value + "%." +
-      "<br>" + experienceVl.toFixed(2) + " - За стаж " + experience.value + "%." +
-      "<br>" + prizeId.value + " - Единоразовая премия." +
-      "<br>" + harmfulnessVl.toFixed(2) + " - За вредность." +
-      "<br>" + dayOff.toFixed(2) + " - За выходное и сверхурочное время." +
-      "<hr> <font  color=red> Удержено:</font> <br>" +
-      "<br>" + totalResault.toFixed(2) + " - Подоходный налог." +
-      "<br>" + retirementTax.toFixed(2) + " - Пенсионный налог." +
-      "<hr> <font color=red> Всего начислено: </font>" + resault + "<font  color=green> || К выплате: </font>" + resaultClear +
-      "<br> <hr>" + childrenDel.toFixed(2) + "<font  color=green> - Налоговые вычаты на детей.</font>" +
-      "<br> ~" + oneDay.toFixed(2) + " ~ Заработываешь за один день" +
-      "<br> ~" + oneDeyOff.toFixed(2) + " ~ Заработываешь за один выходной день";
+    "<img src=./logo.png>" + " <hr>" +
+    "<font  color=green> Начислено:</font> <br>" +
+    "<br>" + prizeResault.toFixed(2) + " - Премия за производственные результаты." +
+    "<br>" + summHourIntensity.toFixed(2) + " - Интенсивность." +
+    "<br>" + summHour.toFixed(2) + " - Оплата по часовому тарифу." +
+    "<br>" + professionalismVl.toFixed(2) + " - Профмастерство " + professionalism.value + "%." +
+    "<br>" + experienceVl.toFixed(2) + " - За стаж " + experience.value + "%." +
+    "<br>" + prizeId.value + " - Единоразовая премия." +
+    "<br>" + harmfulnessVl.toFixed(2) + " - За вредность." +
+    "<br>" + dayOff.toFixed(2) + " - За выходное и сверхурочное время." +
+    "<hr> <font  color=red> Удержано:</font> <br>" +
+    "<br>" + totalResault.toFixed(2) + " - Подоходный налог." +
+    "<br>" + retirementTax.toFixed(2) + " - Пенсионный налог." +
+    "<hr> <font color=red> <b>Всего начислено:</b> </font> <font style=background-color:#ffff00;>" + resault + "</font><font  color=green> || <b> К выплате: </b> </font><font style=background-color:#ffff00;>" + resaultClear +
+    "</font><br> <hr> <b>========== Другое ===========</b>" +
+    "<br>" +
+    "<br>" + childrenDel.toFixed(2) + "<font  color=green> - Налоговые вычаты на детей.</font>" +
+    "<br> ~" + oneDay.toFixed(2) + " ~ Зарабатываешь за один день" +
+    "<br> ~" + oneDeyOff.toFixed(2) + " ~ Зарабатываешь за один выходной день <br><br><br>";
   };
   overlay.style.display = 'block';
 
