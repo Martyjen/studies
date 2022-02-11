@@ -1,5 +1,6 @@
 var input_st = document.querySelectorAll(".input_class");
-let childrenVl = 37; //
+let childrenVl = 37; //Один ребёнок.
+let multiChildrenVl = 70 //Два и более ребёнка.
 
 
 

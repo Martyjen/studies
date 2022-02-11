@@ -30,7 +30,7 @@
       </div>
       <div class="tarif-day-hour1 noBlock">Стаж.<div>
           <select class="input_class" id="experience">
-            <option value="1">Меньше года.</option>
+            <option value="0">Меньше года.</option>
             <option value="5">1 год</option>
             <option value="10">2 года</option>
             <option value="15">3 года</option>
@@ -60,31 +60,41 @@
     <div class="tarif-day-hour1 noBlock">Ежемесячная премия - %.<div><input type="number" class="input_class"
           id="prizeResaultId" value="30"></div>
     </div>
-    <div class="tarif-day-hour1 noBlock">Интенсивность за <u>полный месяц.</u><div><input type="number" class="input_class"
+    <div class="tarif-day-hour1 noBlock">Интенсивность за полный месяц.<div><input type="number" class="input_class"
           id="intensityId" value="230"></div>
     </div>
 
-
+    <div class="box">
     <div class="tarif-day-hour1">Количество отработанных <u>рабочих дней</u> (по 8 часов).<div><input type="number"
           class="input_class" id="worked_day" value="22"></div>
     </div>
+     </div>
+     <div class="box">
     <div class="tarif-day-hour1">Сумма количества <u>часов</u> за <u>неполные рабочие дни.</u> (За свой счёт или сокращённый рабочий
       день.)<div><input type="number" class="input_class" id="tarif_no_day" value="0"></div>
     </div>
+  </div>
 
+  <div class="box">
     <div class="tarif-day-hour1">Количество <u>дней</u> в отпуске. (На больничном или за свой счёт.)<div><input type="number"
           class="input_class" id="vacation_day" value="0"></div>
     </div>
+  </div>
     <div class="tarif-day-hour1 noBlock">Профмастерство.<div><input type="number" class="input_class"
           id="professionalism" value="45"></div>
     </div>
+
+   
+      <div class="box">
     <div class="tarif-day-hour1">Сумма <u>часов</u> за выходное и сверхурочное время.<div><input type="number" class="input_class" id="dayOffId"
       value="0"></div>
 </div>
-
+</div>
+<div class="box">
     <div class="tarif-day-hour1">Единоразовая премия.<div><input type="number" class="input_class" id="prizeId"
           value="0"></div>
     </div>
+  </div>
     <div class="box noBlock">
       <div class="tarif-day-hour1 noBlock">Количество детей<div>
           <select class="input_class" id="childrenId">
@@ -101,7 +111,7 @@
     <hr>
     <div><button class="input_class" id="button">Посчитать!</button></div>
   </div>
-  <hr>
+    <hr>
   <div id="out">
      </div>
 
