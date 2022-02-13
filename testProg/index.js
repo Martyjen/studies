@@ -1,24 +1,13 @@
-let inputId = document.getElementById("input_id");
-let buttonId = document.getElementById("button_id");
 
-buttonId.addEventListener('click', function () {
-  inputId.value = eval(inputId.value);
-});
+let slava = 10.44;
+let jenia = slava > 5 ? 0 : slava;
 
-
-function noTochek() {
-  var tochka = 0;
-  for (let i = 0; i < inputId.value.length; ++i) {
-      let simvol = inputId.value[i];
-      if (simvol == ".") {
-          ++tochka;
-          if (tochka == 2) {
-              var stringValue = inputId.value;
-              inputId.value = stringValue.slice(0, -1);
-          }
-      } else if (simvol == "+" || simvol == "-" || simvol == "*" || simvol == "/") {
-          tochka = 0;
-     }
-
-  }
+if (slava > 5) {
+  jenia = 0;
+} 
+else {
+  jenia = slava;
 }
+
+
+console.log(++slava);

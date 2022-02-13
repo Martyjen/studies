@@ -1,24 +1,23 @@
 let buttonId = document.querySelectorAll(".button_bt"); //Получил массив кнопок с классом ".button_bt".
 var inputId = document.getElementById('input_id');
-let arrySymbol = ["--", "++", "**", "//", "+-", "-+", "*+", "+*", "/+", "+/", "-*", "*-", "-/", "/-", "*/", "/*", "-*", "-/", "-.", "*.", "/.", "+."];
-
+let arrySymbol = ["--", "++", "**", "//", "+-", "-+", "*+", "+*", "/+", "+/", "-*", "*-", "-/", "/-", "*/", "/*", "-*", "-/", "-.", "*.", "/.", "+.", ". -", "- .", " - -", "- - "];
 for (let i = 0; i < buttonId.length; i++) {
 
     buttonId[i].addEventListener('click', function (event) {
-        myFunction();
-        if (inputId.value === "Делить на 0 нельзя!!!") {
+        fontSize();
+        if (inputId.value === "ОГО-ГО-ГО какое число!") {
             inputId.value = "";
         }
         if (event.path[0].value === "ce") {
             inputId.value = "";
         }
         else if (event.path[0].value === "delite") {
-            let stringValue = inputId.value;
-            inputId.value = stringValue.slice(0, -1);
+            oneDelSimbol(-1);
         }
         else if (event.path[0].value == "=") {
             calculateResult();
-            noUndefined();
+            fontSize();
+            outputChange()
         }
         else {
             let keyValue = event.path[0].value;
@@ -27,70 +26,76 @@ for (let i = 0; i < buttonId.length; i++) {
             noDubbleSigns();
             noDubbleDot();
         }
-        if (String(inputId.value) === " Infinity" || String(inputId.value) === " -Infinity") {
-            inputId.value = "Делить на 0 нельзя!!!";
-        }
+
     });
 }
 
-function noUndefined() {
-    if (String(inputId.value) === " undefined") {
+//Сравнение и вывод:
+function outputChange() {
+    if (String(inputId.value) === " Infinity" || String(inputId.value) === " -Infinity") {
+        inputId.value = "ОГО-ГО-ГО какое число!";
+        inputId.style.fontSize = 30 + "px";
+    } else if (String(inputId.value) === " undefined") {
         inputId.value = "";
     } else if (String(inputId.value) === " 46938") {
-        inputId.value = "Mixer: v 0.3 - Немоквич Евгений.";
+        inputId.value = "Mixer: v 0.4 - Немоквич Евгений.";
+        inputId.style.fontSize = 30 + "px";
     }
 }
-
 //Уменьшает размер символов в "input". ========================
-function myFunction() {
-    var initialSize = 50 - inputId.value.length;
-    initialSize = initialSize <= 25 ? 25 : initialSize;
-    inputId.style.fontSize = initialSize + "px";
-    console.log(inputId.style.fontSize);
+function fontSize() {
+    let fontSizePx = 50 - inputId.value.length;
+    inputId.style.fontSize = fontSizePx <= 25 ? 25 : fontSizePx + "px";
+    // console.log(fontSizePx);
 }
 
 //Вычисление.
 function calculateResult() {
     inputId.value = eval(inputId.value);
-    inputId.value = " " + inputId.value; // добавляет пробел в начало строки.
+    inputId.value = " " + inputId.value; // Добавляет пробел в начало строки.
 }
 
-//Запрет ввода первым символом + - * /.
+//Запрет ввода первым математических операторов + - * /.
 function noInput() {
     if (inputId.value[0] == '+' || inputId.value[0] == "-" || inputId.value[0] == "/" || inputId.value[0] == "*") {
-        var stringValue = inputId.value;
-        inputId.value = stringValue.slice(0, -1);
+        oneDelSimbol(-1);
     }
 }
 
-//Запрет двух символов подряд.
+//Запрет ввода груп символов из массива "arrySymbol".
 function noDubbleSigns() {
-    let stringVl = inputId.value.length - 1;
-    let stringVlMinusOne = inputId.value.length - 2;
-    let a = inputId.value[stringVl];
-    let b = inputId.value[stringVlMinusOne];
-
     for (let i = 0; i < arrySymbol.length; ++i) {
-        if (a + b == arrySymbol[i]) {
-            var stringValue = inputId.value;
-            inputId.value = stringValue.slice(0, -1);
+        let a = inputId.value[inputId.value.length - 1];
+        let b = inputId.value[inputId.value.length - 2];
+        let c = inputId.value[inputId.value.length - 3];
+        let d = inputId.value[inputId.value.length - 4];
+        if (a + b == arrySymbol[i] || b + a == "/0") {
+            oneDelSimbol(-1);
+        } else if (a + b + c == arrySymbol[i] || a + b + c + d == arrySymbol[i]) {
+            oneDelSimbol(-2);
+
         }
     }
 }
 
 //Запрет двух точек
 function noDubbleDot() {
-    var tochka = 0;
+    let tochka = 0;
     for (let i = 0; i < inputId.value.length; ++i) {
         let simvol = inputId.value[i];
         if (simvol == ".") {
             ++tochka;
             if (tochka == 2) {
-                var stringValue = inputId.value;
-                inputId.value = stringValue.slice(0, -1);
+                oneDelSimbol(-1);
             }
         } else if (simvol == "+" || simvol == "-" || simvol == "*" || simvol == "/") {
             tochka = 0;
         }
     }
+}
+
+// Функция удаления последнего символа.
+function oneDelSimbol(i) {
+    var stringValue = inputId.value;
+    inputId.value = stringValue.slice(0, i);
 }
