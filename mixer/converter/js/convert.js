@@ -57,14 +57,8 @@ function noInfinityNan() {
         resault.value = "";
     }
 }
+//Запрет ввода первым математических операторов + - * / и 00 .
 
-for (let i = 0; i < elNumber1.value.length; ++i) {
-    var simbol = elNumber1.value[i];
-    if (simbol == "..") {
-        elNumber1.value = simbol.slice(0, -1);
-
-    }
-}
 
 // Клавиатура ==============================================
 for (let i = 0; i < divCalc.length; i++) {
@@ -75,18 +69,16 @@ for (let i = 0; i < divCalc.length; i++) {
             let keyValue = "";
             elNumber1.value = keyValue;
             resault.value = keyValue;
-            noTochka();
         }
         else if (event.path[0].value === "delite") {
-            let stringValue = elNumber1.value;
-            elNumber1.value = stringValue.slice(0, -1);
+            elNumber1.value = elNumber1.value.slice(0, -1);
             noDubbleDot();
             convertingValues();
         }
         else {
-            let keyValue = event.path[0].value;
-            elNumber1.value += keyValue;
+            elNumber1.value += event.path[0].value;
             noDubbleDot();
+            elNumber1.value = elNumber1.value == "00" ? elNumber1.value.slice(0, -1) : elNumber1.value;
             convertingValues();
         }
         noInfinityNan()
@@ -97,12 +89,10 @@ for (let i = 0; i < divCalc.length; i++) {
 function noDubbleDot() {
     var tochka = 0;
     for (let i = 0; i < elNumber1.value.length; ++i) {
-        let simvol = elNumber1.value[i];
-        if (simvol == ".") {
+        if (elNumber1.value[i] == ".") {
             ++tochka;
             if (tochka == 2) {
-                var stringValue = elNumber1.value;
-                elNumber1.value = stringValue.slice(0, -1);
+                elNumber1.value = elNumber1.value.slice(0, -1);
             }
         }
     }

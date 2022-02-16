@@ -1,14 +1,22 @@
 let resaultVl;
 var oneDay;
+//---------------------- Проверка ввода. Если нет сохранённых данных, то выводить значение "value"
+
+day_rate.value = localStorage.getItem('day_rate') == null ? day_rate.value : localStorage.getItem('day_rate'); // Норма рабочих дней в месяц.
+tarif_no_day.value = localStorage.getItem('tarif_no_day') == null ? tarif_no_day.value : localStorage.getItem('tarif_no_day'); // Суммарное количества отработаных часов за неполные рабочие дни.
+worked_day.value = localStorage.getItem('worked_day') == null ? worked_day.value : localStorage.getItem('worked_day'); // Количество отработанных рабочих дней (по 8 часов).
+vacation_day.value = localStorage.getItem('vacation_day') == null ? vacation_day.value : localStorage.getItem('vacation_day'); // Количество дней в отпуске (На больничном или за свой счёт.)
+dayOffId.value = localStorage.getItem('dayOffId') == null ? dayOffId.value : localStorage.getItem('dayOffId'); // Сумма часов за выходное и сверхурочное время.
+prizeId.value = localStorage.getItem('prizeId') == null ? prizeId.value : localStorage.getItem('prizeId'); // Единоразовая премия.
 
 // Проверка на ввод данных в настройках.
-if (intensityId.value
-  && hour.value
-  && professionalism.value
-  && childrenId.value
-  && harmfulness.value
-  && experience.value
-  && prizeResaultId.value >= 0) {
+if (localStorage.getItem('intensityId')
+  && localStorage.getItem('hour')
+  && localStorage.getItem('professionalism')
+  && localStorage.getItem('childrenId')
+  && localStorage.getItem('harmfulness')
+  && localStorage.getItem('experience')
+  && localStorage.getItem('prizeResaultId') >= null) {
   document.querySelector("#no-profile").innerHTML = "";
 } else {
   document.querySelector("#no-profile").innerHTML =
@@ -18,6 +26,13 @@ if (intensityId.value
 }
 
 button.addEventListener('click', function (e) {
+
+  localStorage.setItem('day_rate', day_rate.value); // Норма рабочих дней в месяц.
+  localStorage.setItem('worked_day', worked_day.value); // Количество отработанных рабочих дней (по 8 часов).
+  localStorage.setItem('tarif_no_day', tarif_no_day.value); // Суммарное количества отработаных часов за неполные рабочие дни.
+  localStorage.setItem('vacation_day', vacation_day.value); // Количество дней в отпуске (На больничном или за свой счёт.)
+  localStorage.setItem('dayOffId', dayOffId.value); // Сумма часов за выходное и сверхурочное время.
+  localStorage.setItem('prizeId', prizeId.value); // Единоразовая премия.
 
   let summ = +worked_day.value * 8; // Сумма времени за полные дни.
 
@@ -74,7 +89,7 @@ button.addEventListener('click', function (e) {
 
   //----======Дополнительные вычисления===------
 
-  //Расчёт одного выходного дня.
+  //---===Расчёт одного выходного дня.
   let oneDeyOff = oneDay + (+hour.value * 8);
 
 
@@ -108,7 +123,7 @@ button.addEventListener('click', function (e) {
 
   overlay.style.display = 'block';
 
-  // //Проверка консольная
+  //Проверка консольная
   // console.log(resaultClear + " -Чистыми, на руки");
   // console.log(resault + " -Грязные");
   // console.log(summHour + " - Оплата по часавому тарифу - полный месяц");

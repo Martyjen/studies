@@ -2,10 +2,9 @@ let buttonId = document.querySelectorAll(".button_bt"); //Получил мас�
 var inputId = document.getElementById('input_id');
 let arrySymbol = ["--", "++", "**", "//", "+-", "-+", "*+", "+*", "/+", "+/", "-*", "*-", "-/", "/-", "*/", "/*", "-*", "-/", "-.", "*.", "/.", "+.", ". -", "- .", " - -", "- - "];
 for (let i = 0; i < buttonId.length; i++) {
-
     buttonId[i].addEventListener('click', function (event) {
-        fontSize();
-        if (inputId.value === "ОГО-ГО-ГО какое число!") {
+            fontSize();
+        if (inputId.value === "ОГО-ГО-ГО какое число!" || inputId.value ===  "Mixer - Немоквич Евгений.") {
             inputId.value = "";
         }
         if (event.path[0].value === "ce") {
@@ -17,16 +16,14 @@ for (let i = 0; i < buttonId.length; i++) {
         else if (event.path[0].value == "=") {
             calculateResult();
             fontSize();
-            outputChange()
+            outputChange();
         }
         else {
-            let keyValue = event.path[0].value;
-            inputId.value += keyValue;
+            inputId.value += event.path[0].value;
             noInput();
             noDubbleSigns();
             noDubbleDot();
         }
-
     });
 }
 
@@ -38,15 +35,15 @@ function outputChange() {
     } else if (String(inputId.value) === " undefined") {
         inputId.value = "";
     } else if (String(inputId.value) === " 46938") {
-        inputId.value = "Mixer: v 0.4 - Немоквич Евгений.";
-        inputId.style.fontSize = 30 + "px";
+        inputId.value = "Mixer - Немоквич Евгений.";
+        inputId.style.fontSize = 25 + "px";
     }
 }
+
 //Уменьшает размер символов в "input". ========================
 function fontSize() {
     let fontSizePx = 50 - inputId.value.length;
     inputId.style.fontSize = fontSizePx <= 25 ? 25 : fontSizePx + "px";
-    // console.log(fontSizePx);
 }
 
 //Вычисление.
@@ -55,26 +52,23 @@ function calculateResult() {
     inputId.value = " " + inputId.value; // Добавляет пробел в начало строки.
 }
 
-//Запрет ввода первым математических операторов + - * /.
+//Запрет ввода первым математических операторов + - * / и 00 .
 function noInput() {
-    if (inputId.value[0] == '+' || inputId.value[0] == "-" || inputId.value[0] == "/" || inputId.value[0] == "*") {
+    for (let i = 0; i < 10; ++i ){
+    if (inputId.value == '+' || inputId.value == "-" || inputId.value == "/" || inputId.value == "*" || inputId.value == "0" + i|| inputId.value == " 0" + i) {
         oneDelSimbol(-1);
     }
+}
 }
 
 //Запрет ввода груп символов из массива "arrySymbol".
 function noDubbleSigns() {
     for (let i = 0; i < arrySymbol.length; ++i) {
-        let a = inputId.value[inputId.value.length - 1];
-        let b = inputId.value[inputId.value.length - 2];
-        let c = inputId.value[inputId.value.length - 3];
-        let d = inputId.value[inputId.value.length - 4];
-        if (a + b == arrySymbol[i] || b + a == "/0") {
+        if (inputId.value[inputId.value.length - 1] + inputId.value[inputId.value.length - 2] == arrySymbol[i] || inputId.value[inputId.value.length - 2] + inputId.value[inputId.value.length - 1] == "/0") {
             oneDelSimbol(-1);
-        } else if (a + b + c == arrySymbol[i] || a + b + c + d == arrySymbol[i]) {
+        } else if (inputId.value[inputId.value.length - 1] + inputId.value[inputId.value.length - 2] + inputId.value[inputId.value.length - 3] == arrySymbol[i] || inputId.value[inputId.value.length - 1] + inputId.value[inputId.value.length - 2] + inputId.value[inputId.value.length - 3] + inputId.value[inputId.value.length - 4] == arrySymbol[i]) {
             oneDelSimbol(-2);
-
-        }
+        } 
     }
 }
 
@@ -82,13 +76,12 @@ function noDubbleSigns() {
 function noDubbleDot() {
     let tochka = 0;
     for (let i = 0; i < inputId.value.length; ++i) {
-        let simvol = inputId.value[i];
-        if (simvol == ".") {
+        if (inputId.value[i] == ".") {
             ++tochka;
             if (tochka == 2) {
                 oneDelSimbol(-1);
             }
-        } else if (simvol == "+" || simvol == "-" || simvol == "*" || simvol == "/") {
+        } else if (inputId.value[i] == "+" || inputId.value[i] == "-" || inputId.value[i] == "*" || inputId.value[i] == "/") {
             tochka = 0;
         }
     }
@@ -96,6 +89,5 @@ function noDubbleDot() {
 
 // Функция удаления последнего символа.
 function oneDelSimbol(i) {
-    var stringValue = inputId.value;
-    inputId.value = stringValue.slice(0, i);
+    inputId.value = inputId.value.slice(0, i);
 }
