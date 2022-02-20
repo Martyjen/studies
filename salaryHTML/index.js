@@ -18,7 +18,7 @@ if (localStorage.getItem('intensityId')
   && localStorage.getItem('childrenId')
   && localStorage.getItem('harmfulness')
   && localStorage.getItem('experience')
-  && localStorage.getItem('prizeResaultId') >= null) {
+  && localStorage.getItem('prizeResaultId')) {
   document.querySelector("#no-profile").innerHTML = "";
 } else {
   document.querySelector("#no-profile").innerHTML =
@@ -93,7 +93,8 @@ buttonId.addEventListener('click', function () {
 
   //---===Расчёт одного выходного дня.
   let oneDeyOff = oneDay + (+hour.value * 8);
-
+  let taxOneDeyOff = oneDeyOff - oneDeyOff * 0.14 ; // Выходной день с вычетам налогов.
+  let taxOneDay = oneDay - oneDay * 0.14 ; // Оплата рабочего дня с вычетом налогов.
 
 
   page();
@@ -102,25 +103,24 @@ buttonId.addEventListener('click', function () {
 
   function page() {
     out.innerHTML =
-      "<img src=./logo.png>" + " <hr>" +
-      "<font  color=green> Начислено:</font> <br>" +
-      "<br>" + prizeResault.toFixed(2) + " - Премия за производственные результаты." +
-      "<br>" + summHourIntensity.toFixed(2) + " - Интенсивность." +
-      "<br>" + summHour.toFixed(2) + " - Оплата по часовому тарифу." +
-      "<br>" + professionalismVl.toFixed(2) + " - Профмастерство " + professionalism.value + "%." +
-      "<br>" + experienceVl.toFixed(2) + " - За стаж " + experience.value + "%." +
-      "<br>" + prizeId.value + " - Единоразовая премия." +
-      "<br>" + harmfulnessVl.toFixed(2) + " - За вредность." +
-      "<br>" + dayOff.toFixed(2) + " - За выходное и сверхурочное время." +
-      "<hr> <font  color=red> Удержано:</font> <br>" +
-      "<br>" + totalResault.toFixed(2) + " - Подоходный налог." +
-      "<br>" + retirementTax.toFixed(2) + " - Пенсионный налог." +
-      "<hr> <font color=red> <b>Всего начислено:</b> </font> <font style=background-color:#ffff00;>" + resault + "</font><font  color=green> || <b> К выплате: </b> </font><font style=background-color:#ffff00;>" + resaultClear +
-      "</font><br> <hr> <b>========== Другое ===========</b>" +
-      "<br>" +
-      "<br>" + childrenDel.toFixed(2) + "<font  color=green> - Налоговые вычаты на детей.</font>" +
-      "<br> ~" + oneDay.toFixed(2) + " ~ Зарабатываешь за один день" +
-      "<br> ~" + oneDeyOff.toFixed(2) + " ~ Зарабатываешь за один выходной день <br><br><br>";
+    "<img src=./logo.png>" + " <hr>" +
+    "<font  color=green> Начислено:</font> " +
+    "<br><b><p align=left>" + prizeResault.toFixed(2) + "</b> - Премия за производственные результаты." +
+    "<br><b>" + summHourIntensity.toFixed(2) + "</b> - Интенсивность." +
+    "<br><b>" + summHour.toFixed(2) + "</b> - Оплата по часовому тарифу." +
+    "<br><b>" + professionalismVl.toFixed(2) + "</b> - Профмастерство " + professionalism.value + "%." +
+    "<br><b>" + experienceVl.toFixed(2) + "</b> - За стаж " + experience.value + "%." +
+    "<br><b>" + prizeId.value + "</b> - Единоразовая премия." +
+    "<br><b>" + harmfulnessVl.toFixed(2) + "</b> - За вредность." +
+    "<br><b>" + dayOff.toFixed(2) + "</b> - За выходное и сверхурочное время." +
+    "<hr> <font  color=red> Удержано:</font>" +
+    "<br><b><p align=left>" + totalResault.toFixed(2) + "</b> - Подоходный налог." +
+    "<br><b>" + retirementTax.toFixed(2) + "</b> - Пенсионный налог.</p>" +
+    "<hr> <font color=red> <b>Всего начислено:</b> </font> <font style=background-color:#ffff00;><b>" + resault + "</b></font><font  color=green> || <b> К выплате: </b> </font><font style=background-color:#ffff00;><b>" + resaultClear +
+    "</b></p></font> <hr> <b>========== Другое ===========</b>" +
+    "<br><b><p align=left>+" + childrenDel.toFixed(2) + "</b> - Налоговые вычаты на детей." +
+    "<br> <font color=red>~" + oneDay.toFixed(2) + "</font>  <b>/</b> <font color=green>" + taxOneDay.toFixed(2) + "</font> ~ Зарабатываешь за один день" +
+    "<br> <font color=red>~" + oneDeyOff.toFixed(2) + "</font>  <b>/</b> <font color=green>" + taxOneDeyOff.toFixed(2) + "</font> ~ Зарабатываешь за один выходной день </p><br>";
   };
 
 
