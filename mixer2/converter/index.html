@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Converter</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="block-1">
+            <div id="block-4" class="pink" onclick="document.location='../index.html'">Калькулятор</div>
+            <div id="block-5" class="yellow" onclick="document.location='../converter/index.html'">Конвертер</div>
+            <div id="block-6" class="green">block-6</div>
+            <div id="block-7" class="blue">block-7</div>
+            <div id="block-8" class="blue1" onclick="document.location='../about/index.html'">О программе</div>
+        </div>
+        <div class="block-2">
+            <div class="border">
+                <div class="text-smol"> Параметры конвертирования:</div>
+                <p>Из:</p>
+                <select class="color_select" name="" id="select1_id"></select>
+                <p>В:</p>
+                <select class="color_select" name="" id="select2_id"></select>
+            </div>
+            <hr>
+            <div class="text-smol"> Введите значение единицы измерения:</div>
+            <input class="color_input" type="text" readonly id="number1">
+            <hr>
+            <div class="border">
+                <div class="text-smol"> Результат конвертирования:</div>
+                <input class="color_input green" type="text" readonly id="resault_id" value="">
+            </div>
+        </div>
+        <div class="block-3">
+            <div class="calc-button">
+                <button class="button_bt" id="1_id" value="1">1</button>
+                <button class="button_bt" id="2_id" value="2">2</button>
+                <button class="button_bt" id="3_id" value="3">3</button>
+                <button class="button_bt" id="4_id" value="4">4</button>
+                <button class="button_bt" id="5_id" value="5">5</button>
+            </div>
+            <div class="calc-button">
+                <button class="button_bt" id="6_id" value="6">6</button>
+                <button class="button_bt" id="7_id" value="7">7</button>
+                <button class="button_bt" id="8_id" value="8">8</button>
+                <button class="button_bt" id="9_id" value="9">9</button>
+                <button class="button_bt" value="0">0</button>
+                <button class="button_bt" value=".">.</button>
+                <button class="button_bt calc-reset blue" value="delite">Удалить</button>
+                <button class="button_bt calc-reset red" value="ce">Очистить</button>
+            </div>
+        </div>
+        <div class="block-4">
+            <!-- <button class="button-conv" id="button_Id">Конвертировать</button> -->
+        </div>
+    </header>
+
+</body>
+<script src="./base/base.js"></script>
+<script src="./js/convert.js"></script>
+
+</html>
