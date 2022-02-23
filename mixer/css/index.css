@@ -71,10 +71,23 @@ body {
     margin: 1px auto;
     }
 
-.header .color {
+.header .color1 {
  border: none;
     width: 99%;
     height: 7vh;
+    background: rgb(207, 232, 252);
+}
+
+.header .color2 {
+    border: none;
+    width: 99%;
+    height: 3vh;
+    background: rgb(207, 232, 252);
+}
+.header .color3 {
+    border: none;
+    width: 99%;
+    height: 3vh;
     background: rgb(207, 232, 252);
 }
 

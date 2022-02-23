@@ -20,19 +20,21 @@ function optionsId() {
 
 // Конвертер.
 function convertingValues() {
-    if (elSelect1.value < elSelect2.value) {
-        resault.value = elSelect1.value / elNumber1.value / elSelect2.value;
-    } else if (elSelect1.value > elSelect2.value) {
+    // if (elSelect1.value > elSelect2.value) {
         resault.value = elSelect1.value * elNumber1.value / elSelect2.value;
-    }
+    // } else if (elSelect1.value < elSelect2.value) {
+    //     resault.value = elSelect1.value * elNumber1.value / elSelect2.value;
+    // }
 }
 
 //Сравнивает значения в select, Если значение одинаковое, меняет значение на +1 в select2.
 elSelect1.addEventListener('change', function () {
-    noDuble()
+    noDuble();
+    console.log(elSelect1.value);
 });
 elSelect2.addEventListener('change', function () {
-    noDuble()
+    noDuble();
+    console.log(elSelect2.value);
 });
 function noDuble() {
     selectOption();
@@ -56,8 +58,6 @@ function noInfinityNan() {
         resault.value = "";
     }
 }
-//Запрет ввода первым математических операторов + - * / и 00 .
-
 
 // Клавиатура ==============================================
 for (let i = 0; i < buttonId.length; i++) {

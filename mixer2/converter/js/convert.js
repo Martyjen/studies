@@ -30,11 +30,9 @@ function convertingValues() {
 //Сравнивает значения в select, Если значение одинаковое, меняет значение на +1 в select2.
 elSelect1.addEventListener('change', function () {
     noDuble();
-    console.log(elSelect1.value);
 });
 elSelect2.addEventListener('change', function () {
     noDuble();
-    console.log(elSelect2.value);
 });
 function noDuble() {
     selectOption();
