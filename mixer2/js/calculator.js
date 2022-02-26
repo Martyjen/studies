@@ -8,25 +8,29 @@ var radioInput = document.querySelectorAll('.radio-checked');
 buttonKeyAll.innerHTML = buttonNormal; //Вариант клавиатуры при загрузке программы.
 calculiator();
 
+//-== Варианты клавиатуры==-
+for (let i = 0; i < radioInput.length; ++i) {
+    radioInput[i].addEventListener('click', function () {
+        if (radioInput[0].checked == true) {
+            buttonKeyAll.innerHTML = buttonNormal;
+        } if (radioInput[1].checked == true) {
+            buttonKeyAll.innerHTML = buttonFull;
+        }
+        calculiator();
+    });
+}
+
 function calculiator() {
     let buttonId = document.querySelectorAll(".button_bt"); //Получил массив кнопок с классом ".button_bt".
     let arrySymbol = ["--", "++", "**", "//", "+-", "-+", "*+", "+*", "/+", "+/", "-*", "*-", "-/", "/-", "*/", "/*", "-*", "-/", "-.", "*.", "/.", "+.", ". -", "- .", " - -", "- - "];
-    
+
     for (let i = 0; i < buttonId.length; i++) {
+        buttonId[i].classList.add("normal");
+        if (radioInput[1].checked == true) {
+            buttonId[i].classList.add("full");
+        }
         buttonId[i].addEventListener('click', function (event) {
 
-            //-== Варианты клавиатуры==-
-            for (let i = 0; i < radioInput.length; ++i) {
-                radioInput[i].addEventListener('click', function () {
-                    if (radioInput[0].checked == true) {
-                        buttonKeyAll.innerHTML = buttonNormal;
-                    } if (radioInput[1].checked == true) {
-                        buttonKeyAll.innerHTML = buttonFull;
-
-                    }
-                    calculiator();
-                });
-            }
             //Реакии на нажатие клавиш.
             fontSize();
             if (inputOne.value === "ОГО-ГО-ГО какое число!" || inputOne.value === "Mixer - Немоквич Евгений.") {

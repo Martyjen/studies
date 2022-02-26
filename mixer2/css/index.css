@@ -109,7 +109,7 @@ body {
 
  /* Кнопки Normal */
 
-/* .header .button_bt {
+.header .normal {
     font-size: 45px;
     margin: 4px 1px 3px 1px;
     width: 23%;
@@ -120,11 +120,11 @@ body {
 }
 .header .button_resault {
     width: 47%;
-} */
+}
 
 /* Кнопки Full */
 
-.header .button_bt {
+.header .full {
     font-size: 177%;
     margin: 4px 1px 3px 1px;
     width: 15%;

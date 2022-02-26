@@ -4,8 +4,6 @@ let elSelect1 = document.getElementById('select1_id');
 let elSelect2 = document.getElementById('select2_id');
 let buttonId = document.querySelectorAll(".button_bt"); // Получаю массив кнопок.
 
-
-
 optionsId(); // Запускает функцию добовления параметров Option для Select. // переменная "converter" подключена отдельно: Папка base - файл "base.js"
 selectOption(); // Не допускает одинаковые параметры у Select1 и Select2;
 
