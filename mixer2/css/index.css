@@ -105,7 +105,11 @@ body {
     padding: 1%;
 }
 
-.header .button_bt {
+/* ------------------------------------------------------------------ */
+
+ /* Кнопки Normal */
+
+/* .header .button_bt {
     font-size: 45px;
     margin: 4px 1px 3px 1px;
     width: 23%;
@@ -116,7 +120,25 @@ body {
 }
 .header .button_resault {
     width: 47%;
+} */
+
+/* Кнопки Full */
+
+.header .button_bt {
+    font-size: 177%;
+    margin: 4px 1px 3px 1px;
+    width: 15%;
+    height: 8vh;
+    border-radius: 12px;
+    box-shadow: 1px 1px 0 #fff, inset 0 1px 1px rgb(0 0 0 / 30%);
+    background: rgb(233, 233, 233);
 }
+.header .button_resault {
+    width: 47%;
+}
+
+
+/* Остальные свойства. -=Цвета=- */
 
 .header .red {
     background: rgb(255, 87, 87);

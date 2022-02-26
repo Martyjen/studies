@@ -21,7 +21,7 @@ function optionsId() {
 // Конвертер.
 function convertingValues() {
     // if (elSelect1.value > elSelect2.value) {
-        resault.value = elSelect1.value * elNumber1.value / elSelect2.value;
+    resault.value = elSelect1.value * elNumber1.value / elSelect2.value;
     // } else if (elSelect1.value < elSelect2.value) {
     //     resault.value = elSelect1.value * elNumber1.value / elSelect2.value;
     // }
@@ -30,9 +30,11 @@ function convertingValues() {
 //Сравнивает значения в select, Если значение одинаковое, меняет значение на +1 в select2.
 elSelect1.addEventListener('change', function () {
     noDuble();
+    localStorage.setItem('select1', elSelect1.value);
 });
 elSelect2.addEventListener('change', function () {
     noDuble();
+    localStorage.setItem('select2', elSelect2.value);
 });
 function noDuble() {
     selectOption();
@@ -47,6 +49,8 @@ function selectOption() {
         if (elSelect2.selectedIndex === -1) {
             elSelect2.selectedIndex = elSelect2[0];
         }
+        elSelect1.value = localStorage.getItem('select1');
+        elSelect2.value = localStorage.getItem('select2');
     }
 }
 

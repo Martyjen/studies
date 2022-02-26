@@ -4,6 +4,8 @@ let elSelect1 = document.getElementById('select1_id');
 let elSelect2 = document.getElementById('select2_id');
 let buttonId = document.querySelectorAll(".button_bt"); // Получаю массив кнопок.
 
+
+
 optionsId(); // Запускает функцию добовления параметров Option для Select. // переменная "converter" подключена отдельно: Папка base - файл "base.js"
 selectOption(); // Не допускает одинаковые параметры у Select1 и Select2;
 
@@ -21,7 +23,7 @@ function optionsId() {
 // Конвертер.
 function convertingValues() {
     // if (elSelect1.value > elSelect2.value) {
-        resault.value = elSelect1.value * elNumber1.value / elSelect2.value;
+    resault.value = elSelect1.value * elNumber1.value / elSelect2.value;
     // } else if (elSelect1.value < elSelect2.value) {
     //     resault.value = elSelect1.value * elNumber1.value / elSelect2.value;
     // }
@@ -30,11 +32,11 @@ function convertingValues() {
 //Сравнивает значения в select, Если значение одинаковое, меняет значение на +1 в select2.
 elSelect1.addEventListener('change', function () {
     noDuble();
-    console.log(elSelect1.value);
+    localStorage.setItem('select1', elSelect1.value);
 });
 elSelect2.addEventListener('change', function () {
     noDuble();
-    console.log(elSelect2.value);
+    localStorage.setItem('select2', elSelect2.value);
 });
 function noDuble() {
     selectOption();
@@ -49,6 +51,8 @@ function selectOption() {
         if (elSelect2.selectedIndex === -1) {
             elSelect2.selectedIndex = elSelect2[0];
         }
+        elSelect1.value = localStorage.getItem('select1');
+        elSelect2.value = localStorage.getItem('select2');
     }
 }
 
