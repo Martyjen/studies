@@ -104,7 +104,7 @@ function calculiator() {
     //Запрет ввода груп символов из массива "arrySymbol".
     function noDubbleSigns() {
         for (let i = 0; i < arrySymbol.length; ++i) {
-            if (inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] == arrySymbol[i] || inputOne.value[inputOne.value.length - 2] + inputOne.value[inputOne.value.length - 1] == "/0") {
+            if (inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] == arrySymbol[i] || inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] + inputOne.value[inputOne.value.length - 3] == "00/") {
                 oneDelSimbol(-1);
             } else if (inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] + inputOne.value[inputOne.value.length - 3] == arrySymbol[i] || inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] + inputOne.value[inputOne.value.length - 3] + inputOne.value[inputOne.value.length - 4] == arrySymbol[i]) {
                 oneDelSimbol(-2);
