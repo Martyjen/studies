@@ -1,4 +1,3 @@
-// Загрузка варианта кнопок из файла button.js.
 let buttonKeyAll = document.getElementById('outButton');
 var inputOne = document.getElementById('input_id');
 var inputTwo = document.getElementById('input_id2');
@@ -7,6 +6,20 @@ var radioInput = document.querySelectorAll('.radio-checked');
 
 buttonKeyAll.innerHTML = buttonNormal; //Вариант клавиатуры при загрузке программы.
 calculiator();
+loadInputMatch ();
+
+function loadInputMatch() {
+inputTwo.value = localStorage.getItem('calcInputTwo');
+inputThree.value = localStorage.getItem('calcInputThree');
+slyleInput();
+}
+
+function slyleInput () {
+inputTwo.style.fontSize = 23 + "px";
+inputTwo.style.color = "red";
+inputThree.style.fontSize = 23 + "px";
+inputThree.style.color = "red";
+}
 
 //-== Варианты клавиатуры==-
 for (let i = 0; i < radioInput.length; ++i) {
@@ -78,18 +91,17 @@ function calculiator() {
 
     //Вычисление.
     function calculateResult() {
-        inputTwo.value = inputOne.value.trimStart();
-        inputTwo.style.fontSize = 23 + "px";
-        inputTwo.style.color = "red";
-        inputOne.value = eval(inputOne.value);
+        inputTwo.value = inputOne.value.trimStart(); // Удалить проблелы в начале строки.
+        slyleInput();
+        inputOne.value = eval(inputOne.value); // Вычисление.
         inputOne.value = " " + inputOne.value; // Добавляет пробел в начало строки.
         inputTwo.value = inputTwo.value + " =" + inputOne.value;
+        localStorage.setItem('calcInputTwo', inputTwo.value);
     }
 
     function addInput3() {
-        inputThree.value = inputTwo.value; // Удалить проблелы в начале строки.
-        inputThree.style.fontSize = 23 + "px";
-        inputThree.style.color = "red";
+        inputThree.value = inputTwo.value; 
+        localStorage.setItem('calcInputThree', inputThree.value);
     }
 
     //Запрет ввода первым математических операторов + - * / и 00 .
