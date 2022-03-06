@@ -6,6 +6,7 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="./css/index.css">
 </head>
+
 <body>
     <header class="header">
         <div class="block-1">
@@ -18,20 +19,21 @@
         <div class="block-2">
             <div class="text-smol"> Введите значение:</div>
             <div class="color-box">
-                <input class="color1 input-class" type="text" readonly id="input_id" onkeyup="myFunction()">
-                <input class="color2 border-top input-class" type="text" readonly id="input_id2">
-                <input class="color3 border-top input-class" type="text" readonly id="input_id3">
+                <div id="inputOneTwoThree"></div>
             </div>
         </div>
         </div>
         <div class="block-3">
-            <div><input type="radio" class="radio-checked" name="button_key" value="button_normal" checked>Простой</input>
-                 <input type="radio" class="radio-checked" name="button_key" value="button_full" >Инженерный</input>
+            <div>
+                <input type="radio" class="radio-checked" name="button_key" value="button_normal"
+                    checked>Простой</input>
+                <input type="radio" class="radio-checked" name="button_key" value="button_full">Инженерный</input>
             </div>
             <div id="outButton"></div>
         </div>
     </header>
 </body>
+<script src="./js/display.js"></script>
 <script src="./js/button.js"></script>
 <script src="./js/calculator.js"></script>
 

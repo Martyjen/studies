@@ -1,20 +1,21 @@
-let buttonKeyAll = document.getElementById('outButton');
-var inputOne = document.getElementById('input_id');
-var inputTwo = document.getElementById('input_id2');
-var inputThree = document.getElementById('input_id3');
-var radioInput = document.querySelectorAll('.radio-checked');
+// Экран - display
+document.querySelector('#inputOneTwoThree').innerHTML = displayInput; // загрузка параметров экрана из файла display.js;
 
+let radioInput = document.querySelectorAll('.radio-checked');
+
+// Кнопки - button
+let buttonKeyAll = document.querySelector('#outButton');
 buttonKeyAll.innerHTML = buttonNormal; //Вариант клавиатуры при загрузке программы.
-calculiator();
-loadInputMatch ();
 
-function loadInputMatch() {
-inputTwo.value = localStorage.getItem('calcInputTwo');
-inputThree.value = localStorage.getItem('calcInputThree');
-slyleInput();
-}
+// Инициализация и загрузка данных.
+calculiator(); // Инициализировать скрипт калькулятора.
+inputTwo.value = localStorage.getItem('calcInputTwo'); // Загрузка сохранённых данных.
+inputThree.value = localStorage.getItem('calcInputThree'); // Загрузка сохранённых данных.
+slyleInput(); // Загрузка стилей.
 
-function slyleInput () {
+
+// Оформление Input-ов.
+function slyleInput() {
 inputTwo.style.fontSize = 23 + "px";
 inputTwo.style.color = "red";
 inputThree.style.fontSize = 23 + "px";
@@ -36,7 +37,6 @@ for (let i = 0; i < radioInput.length; ++i) {
 function calculiator() {
     let buttonId = document.querySelectorAll(".button_bt"); //Получил массив кнопок с классом ".button_bt".
     let arrySymbol = ["--", "++", "**", "//", "+-", "-+", "*+", "+*", "/+", "+/", "-*", "*-", "-/", "/-", "*/", "/*", "-*", "-/", "-.", "*.", "/.", "+.", ". -", "- .", " - -", "- - "];
-
     for (let i = 0; i < buttonId.length; i++) {
         buttonId[i].classList.add("normal");
         if (radioInput[1].checked == true) {
@@ -92,7 +92,6 @@ function calculiator() {
     //Вычисление.
     function calculateResult() {
         inputTwo.value = inputOne.value.trimStart(); // Удалить проблелы в начале строки.
-        slyleInput();
         inputOne.value = eval(inputOne.value); // Вычисление.
         inputOne.value = " " + inputOne.value; // Добавляет пробел в начало строки.
         inputTwo.value = inputTwo.value + " =" + inputOne.value;
@@ -106,7 +105,7 @@ function calculiator() {
 
     //Запрет ввода первым математических операторов + - * / и 00 .
     function noInput() {
-        for (let i = 0; i < 1; ++i) {
+        for (let i = 0; i < 10; ++i) { 
             if (inputOne.value == '+' || inputOne.value == "-" || inputOne.value == "/" || inputOne.value == "*" || inputOne.value == "0" + i || inputOne.value == " 0" + i) {
                 oneDelSimbol(-1);
             }
@@ -116,9 +115,13 @@ function calculiator() {
     //Запрет ввода груп символов из массива "arrySymbol".
     function noDubbleSigns() {
         for (let i = 0; i < arrySymbol.length; ++i) {
-            if (inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] == arrySymbol[i] || inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] + inputOne.value[inputOne.value.length - 3] == "00/") {
+            let a = inputOne.value[inputOne.value.length - 1];
+            let b = inputOne.value[inputOne.value.length - 2];
+            let c = inputOne.value[inputOne.value.length - 3];
+            let d = inputOne.value[inputOne.value.length - 4];
+            if (a + b == arrySymbol[i] || c + b + a == "/00" || c + b + a == "+00" || c + b + a == "-00" || c + b + a == "*00") {
                 oneDelSimbol(-1);
-            } else if (inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] + inputOne.value[inputOne.value.length - 3] == arrySymbol[i] || inputOne.value[inputOne.value.length - 1] + inputOne.value[inputOne.value.length - 2] + inputOne.value[inputOne.value.length - 3] + inputOne.value[inputOne.value.length - 4] == arrySymbol[i]) {
+            } else if (a + b + c == arrySymbol[i] || a + b + c + d == arrySymbol[i]) {
                 oneDelSimbol(-2);
             }
         }
