@@ -50,7 +50,8 @@ function calculiator() {
                 inputOne.value = "";
             }
             if (event.path[0].value === "ce") {
-                inputOne.value = "";
+                // inputOne.value = "";
+                modulMunus()
             }
             else if (event.path[0].value === "delite") {
                 oneDelSimbol(-1);
@@ -69,6 +70,7 @@ function calculiator() {
             }
         });
     }
+
 
     //Сравнение и вывод:
     function outputChange() {
