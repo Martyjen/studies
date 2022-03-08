@@ -86,7 +86,6 @@ function calculiator() {
         }
     }
 
-    //   inputOne.value = inputOne.value.trimStart();
     //Сравнение и вывод:
     function outputChange() {
         if (String(inputOne.value) === " Infinity" || String(inputOne.value) === " -Infinity") {
