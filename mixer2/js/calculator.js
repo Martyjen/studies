@@ -51,7 +51,6 @@ function calculiator() {
             }
             if (event.path[0].value === "ce") {
                 // inputOne.value = "";
-                modulMunus()
             }
             else if (event.path[0].value === "delite") {
                 oneDelSimbol(-1);
@@ -71,6 +70,18 @@ function calculiator() {
         });
     }
 
+    //модуль -
+
+    function modulMunus(){
+        let str = inputOne.value;
+        let i = str.length - 1;
+        
+        while (str[i] >= 0 && str[i] <= 9) {
+            i--;
+            
+        }
+        str.replace(i + 1, str.length - 1, '55555')   
+      }
 
     //Сравнение и вывод:
     function outputChange() {
