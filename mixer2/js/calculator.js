@@ -50,10 +50,13 @@ function calculiator() {
                 inputOne.value = "";
             }
             if (event.path[0].value === "ce") {
-                // inputOne.value = "";
-            }
+                inputOne.value = "";
+                }
             else if (event.path[0].value === "delite") {
                 oneDelSimbol(-1);
+            }
+            else if (event.path[0].value == " -"){
+                modulMunus();
             }
             else if (event.path[0].value == "=") {
                 addInput3();
@@ -71,16 +74,15 @@ function calculiator() {
     }
 
     //модуль -
+       function modulMunus(){
 
-    function modulMunus(){
-        let str = inputOne.value;
-        let i = str.length - 1;
-        
-        while (str[i] >= 0 && str[i] <= 9) {
-            i--;
-            
+        if (inputOne.value[0] != "-"){
+      let arryInput = inputOne.value.split('');
+      arryInput.unshift("-");
+      inputOne.value = arryInput.join("");
+        } else if (inputOne.value[0] == "-"){
+            inputOne.value = inputOne.value.slice(1);
         }
-        str.replace(i + 1, str.length - 1, '55555')   
       }
 
     //Сравнение и вывод:
