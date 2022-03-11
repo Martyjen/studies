@@ -77,8 +77,6 @@ function calculiator() {
     function modulMunus() {
         if (inputOne.value[0] == "-") {
             inputOne.value = inputOne.value.slice(1);
-        } else if (inputOne.value[1] == "-") {
-            inputOne.value = inputOne.value.slice(2);
         } else if (inputOne.value[0] != "-") {
             let arryInput = inputOne.value.split(''); // разбить строку на массив.
             arryInput.unshift("-"); // добавить "-" в начало массива.
@@ -88,12 +86,12 @@ function calculiator() {
 
     //Сравнение и вывод:
     function outputChange() {
-        if (String(inputOne.value) === " Infinity" || String(inputOne.value) === " -Infinity") {
+        if (String(inputOne.value) === "Infinity" || String(inputOne.value) === "-Infinity") {
             inputOne.value = "ОГО-ГО-ГО какое число!";
             inputOne.style.fontSize = 30 + "px";
-        } else if (String(inputOne.value) === " undefined") {
+        } else if (String(inputOne.value) === "undefined") {
             inputOne.value = "";
-        } else if (String(inputOne.value) === " 46938") {
+        } else if (String(inputOne.value) === "46938") {
             inputOne.value = "Mixer - Немоквич Евгений.";
             inputOne.style.fontSize = 25 + "px";
         }
@@ -107,9 +105,9 @@ function calculiator() {
 
     //Вычисление.
     function calculateResult() {
-        inputTwo.value = inputOne.value.trimStart(); // Удалить проблелы в начале строки.
+        inputTwo.value = inputOne.value;
         inputOne.value = eval(inputOne.value); // Вычисление.
-        inputOne.value = " " + inputOne.value; // Добавляет пробел в начало строки.
+        inputOne.value = inputOne.value; // Добавляет пробел в начало строки.
         inputTwo.value = inputTwo.value + " =" + inputOne.value;
         localStorage.setItem('calcInputTwo', inputTwo.value);
     }
