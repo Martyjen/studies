@@ -1,22 +1,20 @@
 let tankGame = {
   mapGame: document.querySelector(".game"),
-  mapVertecal: 650,
-  mapHorizontal: 1350,
+  mapVertecal: 600, // Вертикальный развер карты - кратное скорости танка.
+  mapHorizontal: 1200, // Горизантальный развер карты - кратное скорости танка.
   tank: document.querySelector("#tank"),
-  speedTank: 25,
-  tankSize: 50,
+  speedTank: 25, // Скорость танка - половина от размера танка.
+  tankSize: 50, // Размер танка.
   verticalPosition: 0,
   horisontalPosition: 0,
 }
 
 //Инициализация игры.
-tankGame.mapGame.style.width = tankGame.mapHorizontal + "px";
-tankGame.mapGame.style.height = tankGame.mapVertecal + "px";
+tankGame.mapGame.style.width = tankGame.mapHorizontal + tankGame.speedTank + "px";
+tankGame.mapGame.style.height = tankGame.mapVertecal + tankGame.speedTank + "px";
 tankGame.tank.style.width = tankGame.tankSize + "px";
 tankGame.tank.style.height = tankGame.tankSize + "px";
 
-let tankVertical;
-let tankHorisont;
 document.addEventListener('keydown', function (event) {
   if (event.key == "ArrowDown"){
     tankGame.verticalPosition = tankGame.verticalPosition + tankGame.speedTank;
@@ -39,14 +37,13 @@ document.addEventListener('keydown', function (event) {
     console.log (tankGame.horisontalPosition);
   }
 
-
   if (tankGame.horisontalPosition <= 0) {
     tankGame.horisontalPosition = 0;
     tank.style.left = 0 + "px";
   }
   if (tankGame.horisontalPosition >= tankGame.mapHorizontal) {
     tankGame.horisontalPosition = tankGame.mapHorizontal - tankGame.speedTank;
-    tank.style.left = tankGame.mapHorizontal - tankGame.tankSize + "px";
+    tank.style.left = tankGame.mapHorizontal - tankGame.tankSize + tankGame.speedTank + "px";
   }
   if (tankGame.verticalPosition <= 0) {
     tankGame.verticalPosition = 0;
@@ -54,7 +51,7 @@ document.addEventListener('keydown', function (event) {
   }
   if (tankGame.verticalPosition >= tankGame.mapVertecal) {
     tankGame.verticalPosition = tankGame.mapVertecal - tankGame.speedTank;
-    tank.style.top = tankGame.mapVertecal -  tankGame.tankSize + "px";
+    tank.style.top = tankGame.mapVertecal -  tankGame.tankSize + tankGame.speedTank + "px";
   
 }
 });
