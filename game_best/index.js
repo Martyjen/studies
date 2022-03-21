@@ -16,6 +16,7 @@ tankGame.tank.style.width = tankGame.tankSize + "px";
 tankGame.tank.style.height = tankGame.tankSize + "px";
 
 document.addEventListener('keydown', function (event) {
+
   if (event.key == "ArrowDown"){
     tankGame.verticalPosition = tankGame.verticalPosition + tankGame.speedTank;
     tank.style.top = tankGame.verticalPosition + "px";
