@@ -3,6 +3,7 @@ let tankGame = {
   mapVertecal: 600, // Вертикальный развер карты - кратное скорости танка.
   mapHorizontal: 1200, // Горизантальный развер карты - кратное скорости танка.
   tank: document.querySelector("#tank"),
+  tank3: document.querySelector("#tank3"),
   speedTank: 25, // Скорость танка - половина от размера танка.
   tankSize: 50, // Размер танка.
   verticalPosition: 0,
@@ -10,7 +11,6 @@ let tankGame = {
 }
 
 let tankGame2 = {
-  mapGame: document.querySelector(".game"),
   mapVertecal: 600, // Вертикальный развер карты - кратное скорости танка.
   mapHorizontal: 1200, // Горизантальный развер карты - кратное скорости танка.
   tank: document.querySelector("#tank2"),
@@ -22,6 +22,8 @@ let tankGame2 = {
 }
 
 //Инициализация игры.
+
+
 tankGame.mapGame.style.width = tankGame.mapHorizontal + tankGame.speedTank + "px";
 tankGame.mapGame.style.height = tankGame.mapVertecal + tankGame.speedTank + "px";
 tankGame.tank.style.width = tankGame.tankSize + "px";
@@ -29,36 +31,18 @@ tankGame.tank.style.height = tankGame.tankSize + "px";
 tankGame.tank.style.left = tankGame.verticalPosition + "px";
 tankGame.tank.style.top = tankGame.horisontalPosition + "px";
 
+tankGame.tank3.style.width = tankGame.tankSize + "px";
+tankGame.tank3.style.height = tankGame.tankSize + "px";
+tankGame.tank3.style.left = tankGame.verticalPosition + "px";
+tankGame.tank3.style.top = tankGame.horisontalPosition + "px";
+
 
 tankGame2.tank.style.width = tankGame2.tankSize + "px";
 tankGame2.tank.style.height = tankGame2.tankSize + "px";
 tankGame2.tank.style.left = tankGame2.horisontalPosition + "px";
 tankGame2.tank.style.top = tankGame2.verticalPosition + "px";
 
-// document.addEventListener('keydown', function (event) {
 
-  // if (event.key == "ArrowDown"){
-  //   tankGame.verticalPosition = tankGame.verticalPosition + tankGame.speedTank;
-  //   tank.style.top = tankGame.verticalPosition + "px";
-  //   console.log (tankGame.verticalPosition);
-  // }
-  // if (event.key == "ArrowUp"){
-  //   tankGame.verticalPosition = tankGame.verticalPosition - tankGame.speedTank;
-  //   tank.style.top = tankGame.verticalPosition + "px";
-  //   console.log (tankGame.verticalPosition);
-  // }
-  // if (event.key == "ArrowLeft"){
-  //   tankGame.horisontalPosition = tankGame.horisontalPosition - tankGame.speedTank;
-  //   tank.style.left = tankGame.horisontalPosition + "px";
-  //   console.log (tankGame.horisontalPosition);
-  // }
-  // if (event.key == "ArrowRight"){
-  //   tankGame.horisontalPosition = tankGame.horisontalPosition + tankGame.speedTank;
-  //   tank.style.left = tankGame.horisontalPosition + "px";
-  //   console.log (tankGame.horisontalPosition);
-  // }
-
-  //---------------------------------------------------------------------
   let i = 0;
   while (i < 1){
       ++i;
@@ -131,7 +115,6 @@ if (rendome === 0) {
     tank.style.top = tankGame.mapVertecal - tankGame.tankSize + tankGame.speedTank + "px";
   }
 }
-// });
 
 //=======================================================================================================
 

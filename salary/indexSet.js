@@ -1,4 +1,4 @@
-var input_st = document.querySelectorAll(".input_class");
+// let input_st = document.querySelectorAll(".input_class");
 let childrenVl = 40; //Один ребёнок.
 let multiChildrenVl = 75 //Два и более ребёнка.
 
@@ -28,9 +28,7 @@ button_st.addEventListener('click', () => {
     localStorage.setItem('intensityId', intensityId.value);
     localStorage.setItem('managment', managment.value);
     localStorage.setItem('managmentPrize', managmentPrize.value);
-
 });
-
 
 button_rst.addEventListener('click', () => {
     localStorage.clear();

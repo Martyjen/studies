@@ -1,5 +1,6 @@
 let resaultVl;
 var oneDay;
+
 //---------------------- Проверка ввода. Если нет сохранённых данных, то выводить значение "value"
 
 day_rate.value = localStorage.getItem('day_rate') == null ? day_rate.value : localStorage.getItem('day_rate'); // Норма рабочих дней в месяц.
