@@ -44,7 +44,7 @@ function calculiator() {
         }
         buttonId[i].addEventListener('click', function (event) {
 
-            //Реакии на нажатие клавиш.
+            //Реакции на нажатие клавиш.
             fontSize();
             if (inputOne.value === "ОГО-ГО-ГО какое число!" || inputOne.value === "Mixer - Немоквич Евгений.") {
                 inputOne.value = "";
@@ -57,6 +57,14 @@ function calculiator() {
             }
             else if (event.path[0].value == " -") {
                 modulMunus();
+            }
+            else if (event.path[0].value == "%") { // Проценты - введённое число делим на 100 для получения 1%.
+                calculateResult();
+                outputChange();
+                inputOne.value = inputOne.value / 100;
+            }
+            else if (event.path[0].value == "PI") {  // Число ПИ
+                inputOne.value += "3.141592653589793"
             }
             else if (event.path[0].value == "=") {
                 addInput3();
@@ -108,7 +116,7 @@ function calculiator() {
         inputTwo.value = inputOne.value;
         inputOne.value = eval(inputOne.value); // Вычисление.
         inputOne.value = inputOne.value; // Добавляет пробел в начало строки.
-        inputTwo.value = inputTwo.value + " =" + inputOne.value;
+        inputTwo.value = inputTwo.value + " = " + inputOne.value;
         localStorage.setItem('calcInputTwo', inputTwo.value);
     }
 
