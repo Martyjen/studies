@@ -1,0 +1,23 @@
+.game {
+    background-image: url("./img/map.jpg") ;
+    position:relative;
+    margin: 0 auto;
+}
+
+#tank {
+    
+    background-color: brown;
+    position:absolute;
+}
+#tank2 {
+    
+    background-color: rgb(42, 165, 63);
+    position:absolute;
+}
+
+#tank3 {
+    
+    background-color: rgb(61, 42, 165);
+    position:absolute;
+}
+
