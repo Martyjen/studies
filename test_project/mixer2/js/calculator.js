@@ -136,11 +136,12 @@ function calculiator() {
 
     //Запрет ввода груп символов из массива "arrySymbol".
     function noDubbleSigns() {
+        let a = inputOne.value[inputOne.value.length - 1];
+        let b = inputOne.value[inputOne.value.length - 2];
+        let c = inputOne.value[inputOne.value.length - 3];
+        let d = inputOne.value[inputOne.value.length - 4];
         for (let i = 0; i < arrySymbol.length; ++i) {
-            let a = inputOne.value[inputOne.value.length - 1];
-            let b = inputOne.value[inputOne.value.length - 2];
-            let c = inputOne.value[inputOne.value.length - 3];
-            let d = inputOne.value[inputOne.value.length - 4];
+
             if (a + b == arrySymbol[i] || c + b + a == "/00" || c + b + a == "+00" || c + b + a == "-00" || c + b + a == "*00") {
                 oneDelSimbol(-1);
             } else if (a + b + c == arrySymbol[i] || a + b + c + d == arrySymbol[i]) {
