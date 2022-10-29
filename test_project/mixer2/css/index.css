@@ -2,15 +2,17 @@
 
 body {
     margin: 0;
+        background: rgb(235, 217, 196);
 }
 .header {
     display: grid;
     grid-template-areas: 
     "block-1"
     "block-2"
+    "block-22"
     "block-3";
-    grid-template-rows: 7% 20% 1fr;
-    min-height: 98.5vh;
+    grid-template-rows: 7% 16% 16.8% 1fr;
+    min-height: 99vh;
     border: 1px solid;
     border-radius: 4px;
     padding: 2px;
@@ -22,7 +24,7 @@ body {
 
 .header .block-1 {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
     "block-4 block-5 block-6 block-7 block-8";
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     width: 99%;
@@ -33,7 +35,7 @@ body {
 }
 
 .header .block-1 #block-4, .header .block-1 #block-5, .header .block-1 #block-6, .header .block-1 #block-7, .header .block-1 #block-8 {
-    font-size: 58%;
+    font-size: 140%;
     text-align: center;
     border: 1px solid;
     border-radius: 4px;
@@ -59,7 +61,7 @@ body {
 }
 
 .header .text-smol {
-    font-size: 80%;
+    font-size: 180%;
 }
 
 .header .color-box {
@@ -95,6 +97,68 @@ body {
     border-top: rgb(136, 136, 136) 1px  solid;
  }
 
+ /* Блок - 22   */
+
+.header .block-22 {
+   display: grid;
+    grid-template-areas:
+    "block1" "block2" "block3";
+    grid-template-columns: 19% 1fr 19%;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid;
+    padding: 14px;
+    margin-bottom: 2px;
+
+
+ }
+
+ .header .block-22 #block1 {
+
+    grid-column-start: 1;
+    grid-column-end: 2;
+ }
+
+ .header .block-22 #block2 {
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+ }
+
+ .header .block-22 #block3 {
+    grid-column: 3 / 4;
+ }
+
+ .header .block-22 #block2 #bubble_display {
+    width: 98%;
+    min-height: 15vh;
+    border-radius: 4px;
+    border: 1px solid;
+ }
+
+ .header .block-22 #block1 #button_dubble_add {
+    width: 170px;
+    min-height: 15vh;
+    border-radius: 4px;
+    border: 1px solid;
+    font-size: 280%;
+    box-shadow: 1px 1px 0 #fff, inset 0 4px 4px rgb(0 0 0 / 30%);
+    background: rgb(233, 233, 233);
+
+ }
+
+ .header .block-22 #block3 .button_size {
+    width: 86%;
+    min-height: 7vh;
+    margin: 4px;
+    border-radius: 4px;
+    border: 1px solid;
+    font-size: 280%;
+    box-shadow: 1px 1px 0 #fff, inset 0 4px 4px rgb(0 0 0 / 30%);
+ }
+
+
+
 /* Блок - 3  */
 
 .header .block-3 {
@@ -110,12 +174,12 @@ body {
  /* Кнопки Normal */
 
 .header .normal {
-    font-size: 45px;
-    margin: 4px 1px 3px 1px;
+    font-size: 80px;
+    margin: 4px;
     width: 23%;
-    height: 12vh;
+    min-height: 11vh;
     border-radius: 12px;
-    box-shadow: 1px 1px 0 #fff, inset 0 1px 1px rgb(0 0 0 / 30%);
+    box-shadow: 1px 1px 0 #fff, inset 0 4px 4px rgb(0 0 0 / 30%);
     background: rgb(233, 233, 233);
 }
 .header .button_resault {
@@ -125,12 +189,13 @@ body {
 /* Кнопки Full */
 
 .header .full {
-    font-size: 177%;
-    margin: 4px 1px 3px 1px;
+
+    margin: 6px 6px 6px 6px;
     width: 15%;
-    height: 8vh;
+    min-height: 8vh;
+    font-size: 477%;
     border-radius: 12px;
-    box-shadow: 1px 1px 0 #fff, inset 0 1px 1px rgb(0 0 0 / 30%);
+    box-shadow: 1px 1px 0 #fff, inset 0 4px 4px rgb(0 0 0 / 30%);
     background: rgb(233, 233, 233);
 }
 .header .button_resault {
