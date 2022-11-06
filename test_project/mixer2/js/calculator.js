@@ -2,6 +2,7 @@
 document.querySelector('#inputOneTwoThree').innerHTML = displayInput; // загрузка параметров экрана из файла display.js;
 
 let radioInput = document.querySelectorAll('.radio-checked');
+let dubbleDislay = document.querySelector('#bubble_display');
 
 // Кнопки - button
 let buttonKeyAll = document.querySelector('#outButton');
@@ -13,14 +14,21 @@ inputTwo.value = localStorage.getItem('calcInputTwo'); // Загрузка со�
 inputThree.value = localStorage.getItem('calcInputThree'); // Загрузка сохранённых данных.
 slyleInput(); // Загрузка стилей.
 
-
 // Оформление Input-ов.
 function slyleInput() {
-    inputTwo.style.fontSize = 23 + "px";
+    inputTwo.style.fontSize = 37 + "px";
     inputTwo.style.color = "red";
-    inputThree.style.fontSize = 23 + "px";
+    inputThree.style.fontSize = 37 + "px";
     inputThree.style.color = "red";
 }
+
+// -=Двойным нажатием возвращать на второй экран, значение на первый экран=-
+document.addEventListener('dblclick', function (e) {
+    if (e.target.id === "bubble_display") {
+        inputOne.value = dubbleDislay.innerHTML.slice(0, -1);
+
+    }
+});
 
 //-== Варианты клавиатуры==-
 for (let i = 0; i < radioInput.length; ++i) {
@@ -35,45 +43,60 @@ for (let i = 0; i < radioInput.length; ++i) {
 }
 
 function calculiator() {
+
     let buttonId = document.querySelectorAll(".button_bt"); //Получил массив кнопок с классом ".button_bt".
     let arrySymbol = ["--", "++", "**", "//", "+-", "-+", "*+", "+*", "/+", "+/", "-*", "*-", "-/", "/-", "*/", "/*", "-*", "-/", "-.", "*.", "/.", "+.", ". -", "- .", " - -", "- - "];
     for (let i = 0; i < buttonId.length; i++) {
+       buttonId[i].classList.remove("full");
         buttonId[i].classList.add("normal");
         if (radioInput[1].checked == true) {
+            buttonId[i].classList.remove("normal");
             buttonId[i].classList.add("full");
         }
-        buttonId[i].addEventListener('click', function (event) {
 
+        buttonId[i].addEventListener('click', function () {
+            // console.log(buttonId[i].value); //выводить В консоль значение нажатой кнопки
             //Реакции на нажатие клавиш.
             fontSize();
             if (inputOne.value === "ОГО-ГО-ГО какое число!" || inputOne.value === "Mixer - Немоквич Евгений.") {
                 inputOne.value = "";
             }
-            if (event.path[0].value === "ce") {
+            if (buttonId[i].value === "ce") {
                 inputOne.value = "";
             }
-            else if (event.path[0].value === "delite") {
+            else if (buttonId[i].value === "delite") {
                 oneDelSimbol(-1);
             }
-            else if (event.path[0].value == " -") {
+            else if (buttonId[i].value == " -") {
                 modulMunus();
             }
-            else if (event.path[0].value == "%") { // Проценты - введённое число делим на 100 для получения 1%.
+            else if (buttonId[i].value == "%") { // Проценты - введённое число делим на 100 для получения 1%.
                 calculateResult();
                 outputChange();
                 inputOne.value = inputOne.value / 100;
             }
-            else if (event.path[0].value == "PI") {  // Число ПИ
+            else if (buttonId[i].value == "PI") {  // Число ПИ
                 inputOne.value += "3.141592653589793"
             }
-            else if (event.path[0].value == "=") {
+            else if (buttonId[i].value == "=") {
                 addInput3();
                 calculateResult();
                 fontSize();
                 outputChange();
             }
+            else if (buttonId[i].value == "save") {
+                console.log(dubbleDislay.innerHTML);
+                dubbleDislay.innerHTML = dubbleDislay.innerHTML + inputOne.value + "+"; // добавляет значение к уже имеющемуся на дополнительном экране
+            }
+            else if (buttonId[i].value == "del_dubble") {
+
+                dubbleDislay.innerHTML = dubbleDislay.innerHTML.slice(0, -1);//Удаляем последний символ на дополнительном экране
+            }
+            else if (buttonId[i].value == "ce_dubble") { //Очищаем дополнительный экран
+                dubbleDislay.innerHTML = "";
+            }
             else {
-                inputOne.value += event.path[0].value;
+                inputOne.value += buttonId[i].value;
                 noInput();
                 noDubbleSigns();
                 noDubbleDot();
@@ -88,7 +111,7 @@ function calculiator() {
         } else if (inputOne.value[0] != "-") {
             let arryInput = inputOne.value.split(''); // разбить строку на массив.
             arryInput.unshift("-"); // добавить "-" в начало массива.
-            inputOne.value = arryInput.join(""); // все объекты массива объеденить в строку.
+            inputOne.value = arryInput.join(""); // все объекты массива объединить в строку.
         }
     }
 
@@ -96,18 +119,18 @@ function calculiator() {
     function outputChange() {
         if (String(inputOne.value) === "Infinity" || String(inputOne.value) === "-Infinity") {
             inputOne.value = "ОГО-ГО-ГО какое число!";
-            inputOne.style.fontSize = 30 + "px";
+            inputOne.style.fontSize = 35 + "px";
         } else if (String(inputOne.value) === "undefined") {
             inputOne.value = "";
         } else if (String(inputOne.value) === "46938") {
             inputOne.value = "Mixer - Немоквич Евгений.";
-            inputOne.style.fontSize = 25 + "px";
+            inputOne.style.fontSize = 50 + "px";
         }
     }
 
     //Уменьшает размер символов в "input". ========================
     function fontSize() {
-        let fontSizePx = 48 - inputOne.value.length;
+        let fontSizePx = 56 - inputOne.value.length;
         inputOne.style.fontSize = fontSizePx <= 25 ? 25 : fontSizePx + "px";
     }
 
@@ -134,7 +157,7 @@ function calculiator() {
         }
     }
 
-    //Запрет ввода груп символов из массива "arrySymbol".
+    //Запрет ввода групп символов из массива "arrySymbol".
     function noDubbleSigns() {
         let a = inputOne.value[inputOne.value.length - 1];
         let b = inputOne.value[inputOne.value.length - 2];
@@ -170,3 +193,4 @@ function calculiator() {
         inputOne.value = inputOne.value.slice(0, i);
     }
 }
+
