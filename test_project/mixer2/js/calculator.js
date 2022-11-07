@@ -55,7 +55,7 @@ function calculiator() {
         }
 
         buttonId[i].addEventListener('click', function () {
-            // console.log(buttonId[i].value); //выводить В консоль значение нажатой кнопки
+
             //Реакции на нажатие клавиш.
             fontSize();
             if (inputOne.value === "ОГО-ГО-ГО какое число!" || inputOne.value === "Mixer - Немоквич Евгений.") {
