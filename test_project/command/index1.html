@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <title>sbautumn.com</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://static.sbautumn.com/jquery.min.js"></script>
+    <script src="https://static.sbautumn.com/playerjs.js"></script>
+    <script src="https://static.sbautumn.com/jquery.countdown.min.js"></script>
+    <script src="https://static.sbautumn.com/moment.min.js"></script>
+    <script src="https://static.sbautumn.com/moment.timezone.min.js"></script>
+    <link href="https://static.sbautumn.com/font.css" rel="stylesheet" type="text/css">
+    <style media="screen">
+        body {
+            background-color: #393939;
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            align-items: center;
+        }
+        #videoplayerdiv {
+            z-index: 1;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        #timer{
+            opacity: 0.9;
+            background: #272727;
+            height: 150px;
+            width: 320px;
+            padding-top: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            top: -350px;
+            z-index: 100;
+        }
+        #getting-started {
+            color: #fff;
+            text-align: center;
+            font-size: 80px;
+            z-index: 10;
+            width: 100%;
+            margin-top: 50px;
+            position: absolute;
+            top: calc(50% - 100px);
+            font-family: 'Open Sans', sans-serif;
+        }
+        #timer-close {
+            color: #fff;
+            position: inherit;
+            text-align: center;
+            width: 10%;
+            bottom: 1px;
+            margin-bottom: 2.5%;
+            cursor: pointer;
+            margin-left: 40%;
+            font-size: 18px;
+            z-index: 999;
+            font-family: 'Open Sans', sans-seri;
+        }
+        #timer-text {
+            color: #fff;
+            text-align: center;
+            margin-top: 35px;
+            width: 100%;
+            position: absolute;
+            top: calc(50% - 110px);
+            font-size: 24px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .tg-button {
+            position: absolute;
+            display: block;
+            top: 10px;
+            left: 10px;
+            z-index: 10000;
+        }
+        .tg-button img {
+            width: 50px;
+            height: 50px;
+        }
+        .lic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        #videoplayerdiv_control_dis-image_icon {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        #videoplayerdiv_control_dis-image_icon img {
+            position: absolute;
+            width: 80% !important;
+            left: 10%;
+            top: 10%;
+        }
+    </style>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-74128235-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body id="cl_target">
+    <script>
+        $("#timer").animate({top: '0px'}, 500);
+    </script>
+    <div id="timer">
+        <span id="timer-text">The match will begin in:</span>
+        <div id="getting-started" data-date="1000"></div>
+        <span id="timer-close">Hide</span>
+    </div>
+    <div id="player-container">
+        <div id="videoplayerdiv"></div>
+    </div>
+    <a class="tg-button" href="https://t.me/joinchat/WKDYj7lFWcclrwLI" target="_blank">
+        <img src="https://static.sbautumn.com/telegram.png" alt="telegram" />
+    </a>
+    <audio hidden controls preload="none">
+        <source src="" type="audio/mp3">
+    </audio>
+    <script src="https://static.sbautumn.com/j-108df2cd.js"></script>
+    <script>
+        var player;
+        var state = "open";
+        var tracked = false;
+        var vast_is_on = false;
+        function PlayerjsEvents(event,id,info) {
+            if (event == "play" && !tracked) {
+                tracked = true;
+                $.get('https://stat.livesportbar.net/?p');
+                state = "play_sb";
+                clearInterval(intOther);
+                intOther = setInterval(function(){ playOther(); }, 1000);
+            } else if(event == "play") {
+                state = "play_sb";
+                clearInterval(intOther);
+                intOther = setInterval(function(){ playOther(); }, 1000);
+            } else if(event == "init") {
+                state = "init";
+            } else if(event == "start") {
+                state = "start";
+            } else if(event == "pause") {
+                state = "pause";
+            } else if(event == "stop") {
+                state = "stop";
+            } else if(event == "mute") {
+                if(state.indexOf("-mute") == -1) {
+                    state += "-mute"
+                }
+            } else if(event == "unmute") {
+                st = state.split("-").shift();
+                if(st)
+                    state = st;
+                else
+                    state = "unmute";
+            } else if(event == "play_fullscreen") {
+                state = "play_sb_fullscreen";
+            } else if(event == "error") {
+                state = "error";
+            } else if(event == "reload") {
+                state = "reload";
+            } else if(event == "vast_start"){
+                vast_is_on = true;
+                $('.js-div').hide();
+            } else if(event == "vast_finish"){
+                vast_is_on = false;
+                $('.js-div').show();
+            }
+        }
+
+        var videoLink = '/lba/Yjc5NmY0NTM0ZTEwOTViOTA1M2ZiNmQ0M2UyYzU3NDQ=/g4/match.m3u8?token=Yjc5NmY0NTM0ZTEwOTViOTA1M2ZiNmQ0M2UyYzU3NDQ=&id=MjNjZjAzMWNmOWY3Njg0MzIzNDA5OWUwNjQyMjQ5ZDI=&vip=1669145421&dip=MGEyZjMwMDk1MWRlMjg0ODI0YjJiMWFhNjhmMThkMjc=&pip=ZDI4MDBlMWYwZjFlZWIwOGE5ZGNlYzU2MjExNDVkMGQ=&hip=MjdhMTFiZjIyMTlkNzM5ZjI0NjM1MmVhYzU0ZGExMGM=';
+        var timePlayed = 0;
+        var doneOther = 0;
+        var intOther;
+        var rand = Math.random().toString(36).substr(2,20);
+        function playOther() {
+            return;
+
+            var ref = (window.location != window.parent.location) ? document.referrer : document.URL;
+            if (ref.indexOf('web14.com.ua') > -1) {clearInterval(intOther); return false;}
+if (ref.indexOf('livesport.ws') > -1) {clearInterval(intOther); return false;}
+
+
+            if(/Mobi/i.test(navigator.userAgent)){
+                clearInterval(intOther);
+                return;
+            }
+            timePlayed++;
+
+            
+            if (timePlayed >= 30 && 0 == doneOther) {
+                doneOther++;
+                clearInterval(intOther);
+            }
+        }
+
+        function startPlayer() {
+            if (undefined !== document.location.ancestorOrigins && undefined !== document.location.ancestorOrigins[0] && (
+            -1 !== document.location.ancestorOrigins[0].indexOf('sportsrecents.com') || -1 !== document.location.ancestorOrigins[0].indexOf('divan-tv.win') || -1 !== document.location.ancestorOrigins[0].indexOf('tvarina.ru') || -1 !== document.location.ancestorOrigins[0].indexOf('spoortv.org')            )) {
+                videoLink = '';
+                $('#player-container').remove();
+            }
+            var timer = false;
+            var init = false;
+            $("#player-container").show();
+            $('#timer').hide();
+
+            $("#cl_target").on('click', function() {
+                if(!timer) {
+                    $('#timer').show();
+                    $('#timer').animate({top: '45%'}, 500);
+                }
+            });
+            $("#cl_target").on('tap', function() {
+                if(!timer) {
+                    $('#timer').show();
+                    $('#timer').animate({top: '45%'}, 500);
+                }
+            });
+            $("#getting-started").countdown(moment.unix($("#getting-started").data('date')).format("YYYY/MM/DD H:mm"), function(event) {
+                $(this).text(event.strftime('%H:%M:%S'));
+                if(event.strftime('%H') == '00' && event.strftime('%M') < 45) {
+                    $("#timer-text").hide();
+                    $("#getting-started").hide();
+                    $("#timer").hide();
+                    timer = true;
+                }
+                if(!init){
+                    player = new Playerjs({id:"videoplayerdiv", file:videoLink, auto:"play", poster:"/lba/Yjc5NmY0NTM0ZTEwOTViOTA1M2ZiNmQ0M2UyYzU3NDQ=/g4/match.jpg"});
+                    init = true;
+                }
+            });
+            $("#timer-close").on('click', function() {
+                $("#timer").hide();
+                timer = true;
+            });
+            if (watchInterval) {
+                clearInterval(watchInterval);
+            }
+            var watchInterval = setInterval(function() {
+                $.get("https://stats.hd24.watch/watch?state=" + state);
+            }, 5000);
+        }
+        $(document).ready(function(){
+            $.ajax({
+                url: 'https://static.sbautumn.com/j-108df2cd',
+                success: loadJs
+            });
+        });
+
+    </script>
+
+    <div id="movie_video"></div><script type="text/javascript" src="https://vak345.com/s.js?v=2c495cdffa3b64a23b90f33f264b75bd" async></script>
+    <script src="https://static.sbautumn.com/showads.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        if(!document.getElementById('GKgPnptLsYFx')){
+            $.get("https://stat.livesportbar.net/?dap");
+        }
+    </script>
+    <script>
+        (function(w,d,o,g,r,a,m){
+            var cid=(Math.random()*1e17).toString(36);d.write('<div id="'+cid+'"></div>');
+            w[r]=w[r]||function(){(w[r+'l']=w[r+'l']||[]).push(arguments)};
+            function e(b,w,r){if((w[r+'h']=b.pop())&&!w.ABN){
+                var a=d.createElement(o),p=d.getElementsByTagName(o)[0];a.async=1;
+                a.src='//cdn.'+w[r+'h']+'/libs/e.js';a.onerror=function(){e(g,w,r)};
+                p.parentNode.insertBefore(a,p)}}e(g,w,r);
+            w[r](cid,{id:1441431779,domain:w[r+'h']});
+        })(window,document,'script',['trafficdok.com'],'ABNS');
+    </script>
+    <!--LiveInternet counter--><a href="https://www.liveinternet.ru/click"
+    target="_blank" class="lic"><img id="licntF469" width="88" height="15" style="border:0" 
+    title="LiveInternet: показано число посетителей за сегодн€"
+    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+    alt=""/></a><script>(function(d,s){d.getElementById("licntF469").src=
+    "https://counter.yadro.ru/hit?t26.6;r"+escape(d.referrer)+
+    ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+    (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+    ";h"+escape(d.title.substring(0,150))+";"+Math.random()})
+    (document,screen)</script><!--/LiveInternet-->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(71227030, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/71227030" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</body>
+</html>
