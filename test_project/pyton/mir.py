@@ -20,9 +20,9 @@ from random import randrange
 
 cap = cv2.VideoCapture(0)
 
-cap.set(cv2.CAP_PROP_FPS, 60) # Частота кадров
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800) # Ширина кадров в видеопотоке.
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600) # Высота кадров в видеопотоке.
+# cap.set(cv2.CAP_PROP_FPS, 60) # Частота кадров
+# cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800) # Ширина кадров в видеопотоке.
+# cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600) # Высота кадров в видеопотоке.
 
 while True:
     ret, img = cap.read()

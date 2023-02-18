@@ -1,98 +1,54 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import sys
-from ctypes import *
-import os
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+import cv2
 
-# LOG_LINE_NUM = 0
+class MainWindow(QWidget):
+    def __init__(self):
+        super(MainWindow, self).__init__()
 
-# # Python constants
-# STR_BUFFER_SIZE = 32
-# # STREAM_MODE = c_uint8(0)
-# EXPOSURE = c_double(1000.0 * 1000.0)  # us
-# BRIGHTNESS = c_double(1.0)
-# GAIN = c_double(54.0)
+        self.VBL = QVBoxLayout()
 
-# # Constants from the SDK, found in "qhyccdstruct.h
-# # Add more, if more are necessary
-# QHY183_MAX_WIDTH = c_uint32(5544)
-# QHY183_MAX_HEIGHT = c_uint32(3684)
-# CONTROL_BRIGHTNESS = c_int(0)
-# CONTROL_GAIN = c_int(6)
-# CONTROL_EXPOSURE = c_int(8)
-# CONTROL_CURTEMP = c_int(14)
-# CONTROL_CURPWM = c_int(15)
-# CONTROL_MANULPWM = c_int(16)
-# CONTROL_COOLER = c_int(18)
+        self.FeedLabel = QLabel()
+        self.VBL.addWidget(self.FeedLabel)
 
-# chip_width_index = c_double()
-# chip_height_index = c_double()
-# image_width_index = c_uint32()
-# image_height_index = c_uint32()
-# pixel_width_index = c_double()
-# pixel_height_index = c_double()
-# bits_per_pixel_index = c_uint32()
+        self.CancelBTN = QPushButton("Cancel")
+        self.CancelBTN.clicked.connect(self.CancelFeed)
+        self.VBL.addWidget(self.CancelBTN)
 
-# chip_width_c1 = c_double()
-# chip_height_c1 = c_double()
-# image_width_c1 = c_uint32()
-# image_height_c1 = c_uint32()
-# pixel_width_c1 = c_double()
-# pixel_height_c1 = c_double()
-# bits_per_pixel_c1 = c_uint32()
-# # todo
-# chip_width_c2 = c_double()
-# chip_height_c2 = c_double()
-# image_width_c2 = c_uint32()
-# image_height_c2 = c_uint32()
-# pixel_width_c2 = c_double()
-# pixel_height_c2 = c_double()
-# bits_per_pixel_c2 = c_uint32()
+        self.Worker1 = Worker1()
 
+        self.Worker1.start()
+        self.Worker1.ImageUpdate.connect(self.ImageUpdateSlot)
+        self.setLayout(self.VBL)
 
-# QHYCCD_SUCCESS = 0
-# QHYCCD_ERROR = 0xFFFFFFFF
-# from sys import platform
+    def ImageUpdateSlot(self, Image):
+        self.FeedLabel.setPixmap(QPixmap.fromImage(Image))
 
-# so = None
-# if platform == "linux" or platform == "linux2":
-#     so = CDLL("/usr/local/lib/libqhyccd.so")
-#     print('Linux')
-# elif platform == "darwin":
-#     so = CDLL("/usr/local/lib/libqhyccd.dylib")
-#     print('Mac')
-# elif platform == "win32":
-#     if sys.maxsize > 2147483647:
-#         print(sys.maxsize)
-#         print('64-Bit ------------------------------------------------------')
-#         # os.chdir(r"D:\TestUroki\studies\studies\test_project\pyton\qhyccd.dll")
-#     else:
-#         print(sys.maxsize)
-#         print('32-Bit')
-#         os.chdir("C:/SoftwareSVN/sdk_publish/QHYCCD_SDK_CrossPlatform/build32/src/Release")
-#     # so = CDLL("qhyccd.dll")
-so = windll.LoadLibrary(r"D:\TestUroki\studies\studies\test_project\pyton\qhyccd.dll")
-#     # so = CDLL("C:/SoftwareSVN/sdk_publish/QHYCCD_SDK_CrossPlatform/build64/src/Release/qhyccd.dll")
-#     print('Windows')
+    def CancelFeed(self):
+        self.Worker1.stop()
 
+class Worker1(QThread):
+    ImageUpdate = pyqtSignal(QImage)
+    def run(self):
+        self.ThreadActive = True
+        Capture = cv2.VideoCapture(0)
+        while self.ThreadActive:
+            ret, frame = Capture.read()
 
-@CFUNCTYPE(None, c_char_p)
-def pnp_in(cam_id):
-    print("cam   + %s" % cam_id)
+            if ret:
+                Image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                FlippedImage = cv2.flip(Image, 1)
+                ConvertToQtFormat = QImage(FlippedImage.data, FlippedImage.shape[1], FlippedImage.shape[0], QImage.Format_RGB888)
+                # Pic = ConvertToQtFormat.scaled(640, 480, Qt.KeepAspectRatio)
+                self.ImageUpdate.emit(ConvertToQtFormat)
+    def stop(self):
+        self.ThreadActive = False
+        self.quit()
 
-
-@CFUNCTYPE(None, c_char_p)
-def pnp_out(cam_id):
-    print("cam   - %s" % cam_id)
-
-
-def gui_start():
-    so.RegisterPnpEventIn(pnp_in)
-    so.RegisterPnpEventOut(pnp_out)
-    so.InitQHYCCDResource()
-
-
-gui_start()
-command = ""
-while command != "q":
-    command = input()
+if __name__ == "__main__":
+    App = QApplication(sys.argv)
+    Root = MainWindow()
+    Root.show()
+    sys.exit(App.exec())
