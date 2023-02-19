@@ -33,7 +33,8 @@ import numpy as np
 from random import randrange
 
 
-qhyframe.qhystart()
+qhyframe.qhystart() #Запуск камеры QHY
+
 # For GPIO Control
 # Dec-, green, GPIO#22
 # Dec+, yellow, GPIO#4

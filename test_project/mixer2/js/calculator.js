@@ -42,6 +42,23 @@ for (let i = 0; i < radioInput.length; ++i) {
     });
 }
 
+//==Дополнительные кнопки 
+// let button_dubble_a = document.getElementById("button_dubble_add");
+// console.log(button_dubble_add);
+button_dubble_add.addEventListener('click', function () {
+dubbleDislay.innerHTML = dubbleDislay.innerHTML + inputOne.value + "+"; // добавляет значение к уже имеющемуся на дополнительном экране
+});
+button_dubble_del.addEventListener('click', function () {
+    dubbleDislay.innerHTML = dubbleDislay.innerHTML.slice(0, -1);//Удаляем последний символ на дополнительном экране
+});
+button_dubble_ce.addEventListener('click', function () {
+    dubbleDislay.innerHTML = ""; //Очищаем дополнительный экран
+});
+
+
+
+
+
 function calculiator() {
 
     let buttonId = document.querySelectorAll(".button_bt"); //Получил массив кнопок с классом ".button_bt".
@@ -83,17 +100,6 @@ function calculiator() {
                 calculateResult();
                 fontSize();
                 outputChange();
-            }
-            else if (buttonId[i].value == "save") {
-                console.log(dubbleDislay.innerHTML);
-                dubbleDislay.innerHTML = dubbleDislay.innerHTML + inputOne.value + "+"; // добавляет значение к уже имеющемуся на дополнительном экране
-            }
-            else if (buttonId[i].value == "del_dubble") {
-
-                dubbleDislay.innerHTML = dubbleDislay.innerHTML.slice(0, -1);//Удаляем последний символ на дополнительном экране
-            }
-            else if (buttonId[i].value == "ce_dubble") { //Очищаем дополнительный экран
-                dubbleDislay.innerHTML = "";
             }
             else {
                 inputOne.value += buttonId[i].value;
